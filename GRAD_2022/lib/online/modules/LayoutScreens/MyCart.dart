@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:grad_2022/online/models/CouponModel.dart';
 import '../../../Network/end_point.dart';
 import '../../../Network/remote/dioo_helper.dart';
 import '../../../shared/components/components.dart';
@@ -11,7 +12,13 @@ import '../../layout/cubit/states.dart';
 import '../Buy_conform_screen/Buy_conform_screen.dart';
 import '../Details_Screen/details_screen.dart';
 
-class MyCartScreen extends StatelessWidget {
+class MyCartScreen extends StatefulWidget {
+  @override
+  State<MyCartScreen> createState() => _MyCartScreenState();
+}
+
+class _MyCartScreenState extends State<MyCartScreen> {
+  var CouponCode = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -234,7 +241,7 @@ class MyCartScreen extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                          child: Text('00.00',
+                          child: Text('10.00',
                             textAlign: TextAlign.end,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
@@ -259,7 +266,7 @@ class MyCartScreen extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                          child: Text('00.00',
+                          child: Text('${((coupon*user_total)/100)}',
                             textAlign: TextAlign.end,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
@@ -284,7 +291,7 @@ class MyCartScreen extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                          child: Text('3900.00',
+                          child: Text('${(user_total-((coupon*user_total)/100))}',
                             textAlign: TextAlign.end,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
@@ -303,6 +310,7 @@ class MyCartScreen extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: 'Enter coupon code',
                       ),
+                      controller: CouponCode,
                     ),
 
                   ),
@@ -312,7 +320,22 @@ class MyCartScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         MaterialButton(
-                          onPressed: () {},
+                          onPressed: ()
+                          async {
+                            await DioHelperr.getData(
+                                url:DiscountCoupon,
+                            query:
+                            {
+                              "CouponName" : CouponCode
+                            }
+                            ).then((value)
+                            {
+                              couponNameModel = CouponNameModel.fromJson(value!.data);
+                              coupon = couponNameModel!.discount as double;
+
+                            }
+                            ).catchError((error){print(error.toString());});
+                          },
                           color: Colors.blue,
                           child: Text('APPLY',
                             style: TextStyle(

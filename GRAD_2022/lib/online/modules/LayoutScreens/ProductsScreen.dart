@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../Network/end_point.dart';
 import '../../../Network/remote/dioo_helper.dart';
 import '../../../shared/components/components.dart';
 import '../../../shared/variables.dart';
@@ -20,30 +21,32 @@ class ProductsScreen extends StatefulWidget {
 class _ProductsScreenState extends State<ProductsScreen> {
   String? detailsimage;
 
+
   @override
   Widget build(BuildContext context) {
     bool? x;
+    var size = MediaQuery.of(context).size;
     return BlocConsumer<ShopCubit,ShopState>(
         listener: (context, state) {},
         builder: (context,state)
         {
           return ConditionalBuilderRec(
               condition: ProductList != null,
-              builder:(context)=> ProductsBuilder2(ProductList,context,x),
+              builder:(context)=> ProductsBuilder2(ProductList,context,x,size),
               fallback:(context) => Center(child: CircularProgressIndicator())
           );
         }
     );
   }
 
-  Widget ProductsBuilder2( ProductList,context,x ) =>
+  Widget ProductsBuilder2( ProductList,context,x ,size) =>
       SingleChildScrollView(
         child: Column(children: [
           GridView.count(crossAxisCount: 2,
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
-            mainAxisSpacing: 1.0,
-            crossAxisSpacing: 1.0,
+            mainAxisSpacing: (size.height)/50,
+            crossAxisSpacing: (size.width)/50,
             childAspectRatio: 1 / 1.58,
             children: List.generate(
                 ProductList!.length,
@@ -85,7 +88,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                 Image(
                                     image: NetworkImage(ProductList[index]!.image.toString()),
                                   width: double.infinity,
-                                  height: 200.0,
+                                  height: (size.height)/4,
                                 ),
                                 if(ProductList[index]!.discount !=0)
                                   Container(
@@ -151,11 +154,20 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                             is_Cart=false,
                                             );
                                         print(ProductList[index]!.inFav);
-                                        fav2list.add(ProductList[index]);
                                         }
                                         else{
-                                          fav2list.remove(ProductList[index]);
-                                          print(ProductList[index]!.inFav);}
+                                          DioHelperr.postData(url: DeleteByProductIdAndUserId
+                                              ,query:
+                                              {
+                                                "Id": ProductList[index].id,
+                                                "UserId" : 2
+                                              }
+                                              ).then((value) {
+                                                print('remove done');
+                                              }).catchError((error){
+                                                print(error.toString());});
+                                         // print(ProductList[index]!.inFav);
+                                       }
                                       },
                                         icon: CircleAvatar(
                                         radius: 15.0,

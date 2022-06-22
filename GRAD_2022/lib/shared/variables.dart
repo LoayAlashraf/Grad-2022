@@ -7,6 +7,7 @@ import '../online/models/AddProductToCartModel.dart';
 import '../online/models/AddressModel.dart';
 import '../online/models/CartModel.dart';
 import '../online/models/CategoryModel.dart';
+import '../online/models/CouponModel.dart';
 import '../online/models/FavModel.dart';
 import '../online/models/FavModelByUserID.dart';
 import '../online/models/ProductModel.dart';
@@ -66,4 +67,8 @@ List<AddressModel>AddressModelByUserIdList=<AddressModel>[];
 List<ProductModelJson>fav2list=<ProductModelJson>[];
 
 double user_total =0;
+
+double coupon = 00.00 ;
+
+CouponNameModel? couponNameModel;
 

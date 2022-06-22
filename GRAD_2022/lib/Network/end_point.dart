@@ -13,3 +13,6 @@ const AddressAdd ='/Address/Add';
 const FindAddresseUserId ='/Address/FindAddresseUserId';
 const AddressDelete = '/Address/Delete';
 const CartDelete ='/Cart/Delete';
+const DiscountCoupon ='/DiscountCoupon/FindCouponByCouponName';
+const DeleteByProductIdAndUserId ='/Favorite/DeleteByProductIdAndUserId';
+const DeleteByIdAndUserId='/Cart/DeleteByIdAndUserId';

@@ -169,10 +169,11 @@ class FavScreen extends StatelessWidget {
                                       {
                                         //print('productid = ${FavModelByUserIdList[index].productId}');
                                         DioHelperr.postData(
-                                          url: DeleteFromFavByProductId,
+                                          url: DeleteByProductIdAndUserId,
                                           query:
                                           {
-                                            "id": FavModelByUserIdList[index].productId
+                                            "id": FavModelByUserIdList[index].productId,
+                                            "UserId" : 2
 
                                           },
                                         );
