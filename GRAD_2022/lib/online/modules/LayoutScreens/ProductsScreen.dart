@@ -45,9 +45,9 @@ class _ProductsScreenState extends State<ProductsScreen> {
           GridView.count(crossAxisCount: 2,
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
-            mainAxisSpacing: (size.height)/50,
-            crossAxisSpacing: (size.width)/50,
-            childAspectRatio: 1 / 1.58,
+            mainAxisSpacing: 1.5,
+            crossAxisSpacing: 1.5,
+            childAspectRatio: 1 / 1.80,
             children: List.generate(
                 ProductList!.length,
                     (index) => InkWell(
@@ -88,7 +88,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                 Image(
                                     image: NetworkImage(ProductList[index]!.image.toString()),
                                   width: double.infinity,
-                                  height: (size.height)/4,
+                                  // height: (size.height)/4,
+                                  height: 200,
                                 ),
                                 if(ProductList[index]!.discount !=0)
                                   Container(
@@ -127,14 +128,6 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                           color: Colors.blue,
                                       )),
                                       SizedBox(width:5.0 ,),
-                                      if(ProductList[index]!.discount != 0)
-                                          Text(ProductList[index]!.cost.toString(),
-                                          style: TextStyle(
-                                            fontSize: 10.0,
-                                            color: Colors.grey,
-                                            decoration: TextDecoration.lineThrough,
-                                          ),
-                                        ),
                                       Spacer(),
                                       IconButton(onPressed: ()
                                       {
@@ -180,7 +173,15 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                       ),)
 
                                     ],
-                                  )
+                                  ),
+                                  if(ProductList[index]!.discount != 0)
+                                    Text(ProductList[index]!.cost.toString(),
+                                      style: TextStyle(
+                                        fontSize: 18.0,
+                                        color: Colors.grey,
+                                        decoration: TextDecoration.lineThrough,
+                                      ),
+                                    ),
 
                                 ],),
                             )

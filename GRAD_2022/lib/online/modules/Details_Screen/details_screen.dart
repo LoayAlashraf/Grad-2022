@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-
 import '../../../Network/remote/dioo_helper.dart';
 import '../../../shared/components/components.dart';
 import '../../../shared/components/constants.dart';
 import '../../../shared/variables.dart';
-import '../Widget/details/product_image.dart';
 
 
 class DetailsScreen extends StatelessWidget {
@@ -56,7 +54,7 @@ class DetailsScreen extends StatelessWidget {
                                 child: Stack(
                                   alignment: AlignmentDirectional.bottomStart,
                                   children: [
-                                    ProductImage(
+                                    ImageforDetailsScreen(
                                       size: MediaQuery.of(context).size,
                                       image: detailsimage.toString(),
                                     ),
@@ -153,6 +151,34 @@ class DetailsScreen extends StatelessWidget {
         style :Theme.of(context).textTheme.bodyText2,),
     );
   }
+
+  Widget ImageforDetailsScreen( {Size? size, String? image}) => Container(
+    margin: EdgeInsets.symmetric(vertical: kDefaultpadding),
+    height: size!.width * 0.8,
+    child: Stack(
+      alignment: Alignment.bottomCenter,
+      children: [
+        Container(
+          height: size.width * 0.7,
+          width: size.width * 0.7,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+          ),
+        ),
+        // Image.asset(image,
+        //   height: size.width * 0.75,
+        //   width: size.width * 0.75,
+        //   fit: BoxFit.cover,
+        //
+        // ),
+        Image.network(image!,
+          height:size.width * 0.75 ,
+          width: size.width * 0.75,
+          fit: BoxFit.cover,)
+      ],
+    ),
+  );
 }
 
 

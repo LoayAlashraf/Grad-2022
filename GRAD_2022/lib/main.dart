@@ -6,8 +6,10 @@ import 'Network/bloc_observer.dart';
 import 'Network/remote/dio_helper.dart';
 import 'Network/remote/dioo_helper.dart';
 import 'inside/modules/welcome_page/welcome_page.dart';
+import 'online/layout/ShopLayout.dart';
 import 'online/layout/cubit/cubit.dart';
 import 'online/layout/cubit/states.dart';
+import 'online/modules/LayoutScreens/ProductsScreen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,7 +36,7 @@ class MyApp extends StatelessWidget {
           listener: (context, state) {},
           builder: (context,state) {
             return MaterialApp(
-              home: WelcomePage(),
+              home: ShopLayout(),
               theme: ThemeData(
                   primarySwatch: Colors.blue),
               debugShowCheckedModeBanner: false,    );
