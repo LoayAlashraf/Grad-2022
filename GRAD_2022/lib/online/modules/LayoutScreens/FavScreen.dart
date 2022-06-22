@@ -74,7 +74,7 @@ class FavScreen extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 15),
                       child: Container(
-                        height: size.size.height * .26,
+                        height: 210,
                         width: size.size.width * .8,
                         decoration: BoxDecoration(
                           color: Colors.white,

@@ -31,9 +31,9 @@ class CategoriesScreen extends StatelessWidget {
           crossAxisCount: 4,
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
-          mainAxisSpacing: 10.0,
-          crossAxisSpacing: 10.0,
-          childAspectRatio: 1/1.5,
+          mainAxisSpacing: 1.0,
+          crossAxisSpacing: 1.0,
+          childAspectRatio: 1/1.7,
           children:
           List.generate( CategoryList!.length ,
 

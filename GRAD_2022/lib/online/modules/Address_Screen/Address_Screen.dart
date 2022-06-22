@@ -41,7 +41,7 @@ class AddressScreen extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Container(
-                        height: size.size.height * .20,
+                        height: 150,
                         width: size.size.width * 1,
                         decoration: BoxDecoration(
                           color: Colors.grey[300],
