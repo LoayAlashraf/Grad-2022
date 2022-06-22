@@ -88,8 +88,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                 Image(
                                     image: NetworkImage(ProductList[index]!.image.toString()),
                                   width: double.infinity,
-                                  // height: (size.height)/4,
-                                  height: 200,
+                                  height: (size.height)/4,
+                                  //height: 200,
                                 ),
                                 if(ProductList[index]!.discount !=0)
                                   Container(
@@ -124,7 +124,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                     children: [
                                       Text((ProductList[index]!.cost-((ProductList[index]!.discount/100)*ProductList[index]!.cost)).toStringAsFixed(2),
                                         style: TextStyle(
-                                          fontSize: 18.0,
+                                          fontSize: 14.0,
                                           color: Colors.blue,
                                       )),
                                       SizedBox(width:5.0 ,),
@@ -177,7 +177,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                   if(ProductList[index]!.discount != 0)
                                     Text(ProductList[index]!.cost.toString(),
                                       style: TextStyle(
-                                        fontSize: 18.0,
+                                        fontSize: 12.0,
                                         color: Colors.grey,
                                         decoration: TextDecoration.lineThrough,
                                       ),
