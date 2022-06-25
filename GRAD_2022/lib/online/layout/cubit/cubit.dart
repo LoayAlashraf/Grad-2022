@@ -55,10 +55,12 @@ class ShopCubit extends Cubit<ShopState>
       // printFullText(productModelJson!.name.toString());
       // printFullText(productModelJson!.id.toString());
 
-      for(int i=0;i<value!.data.length;i++){
+      //print(value!.data);
+
+      for (int i=0;i<value!.data.length;i++){
 
         productModelJson =ProductModelJson.fromJson(value.data[i]);
-      ProductList.add(productModelJson!);
+        ProductList.add(productModelJson!);
 
         //printFullText(productModelJson!.name.toString());
         //printFullText(productModelJson!.id.toString());
@@ -92,6 +94,7 @@ class ShopCubit extends Cubit<ShopState>
         "Id" : CategoryId
       }
     ).then((value) {
+
       ProductCategoryList.clear();
       for(int i=0;i<value!.data.length;i++){
         productModelJson =ProductModelJson.fromJson(value.data[i]);

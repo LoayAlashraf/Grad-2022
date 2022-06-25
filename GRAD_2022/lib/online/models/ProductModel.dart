@@ -28,7 +28,7 @@ class ProductModelJson {
 
   int? id;
   String? name;
-  int? cost;
+  double? cost;
   int? discount;
   String? image;
   String? rfidCode;
