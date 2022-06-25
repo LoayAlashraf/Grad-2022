@@ -157,7 +157,7 @@ class _FavScreenState extends State<FavScreen> {
                                               children: [
                                                 Text('Price ='),
                                                 Text(
-                                                    '${(int.parse(FavModelByUserIdList[index]!.productCost)-((int.parse(FavModelByUserIdList[index]!.productDiscount)/100)*int.parse(FavModelByUserIdList[index]!.productDiscount))).toStringAsFixed(2)}',
+                                                    '${(double.parse(FavModelByUserIdList[index]!.productCost)-((double.parse(FavModelByUserIdList[index]!.productDiscount)/100)*double.parse(FavModelByUserIdList[index]!.productDiscount))).toStringAsFixed(2)}',
                                                 style: TextStyle(color: Colors.blue),
                                                 ),
                                                 Text(
@@ -218,7 +218,7 @@ class _FavScreenState extends State<FavScreen> {
                                           query:
                                           {
                                             "id": FavModelByUserIdList[index].productId,
-                                            "UserId" : 2
+                                            "UserId" : loginuserId
 
                                           },
                                         );
@@ -230,7 +230,7 @@ class _FavScreenState extends State<FavScreen> {
                                       onTap: ()
                                       {
                                         DioHelperr.addToCart(
-                                            userId=2,
+                                            userId=loginuserId,
                                             productId=FavModelByUserIdList[index].productId,
                                             productName=FavModelByUserIdList[index].productName,
                                             productImage=FavModelByUserIdList[index].productImage,

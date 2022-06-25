@@ -34,7 +34,7 @@ Productdetailsmodel? productdetailsmodel;
 
 FavModel? favModel;
 
-int? userId,productId;
+int? userId,productId,loginuserId;
 
 String? productImage,productDiscount,productCost,producCount,productName;
 

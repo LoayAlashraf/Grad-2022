@@ -145,7 +145,7 @@ class _MyCartScreenState extends State<MyCartScreen> {
                                                         textBaseline: TextBaseline.alphabetic,
                                                         children: [
                                                           Text('Price ='),
-                                                          Text('${(int.parse(CartModelByUserIdList[index].productCost.toString())-((int.parse(CartModelByUserIdList[index].productDiscount.toString())/100)*int.parse(CartModelByUserIdList[index].productDiscount.toString()))).toStringAsFixed(2)}',
+                                                          Text('${(double.parse(CartModelByUserIdList[index].productCost.toString())-((double.parse(CartModelByUserIdList[index].productDiscount.toString())/100)*double.parse(CartModelByUserIdList[index].productDiscount.toString()))).toStringAsFixed(2)}',
                                                             style: TextStyle(color: Colors.blue,),),
                                                           Text(
                                                             'EGP',

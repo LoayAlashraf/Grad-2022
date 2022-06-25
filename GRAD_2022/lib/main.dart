@@ -13,7 +13,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   DioHelperr.init();
-  DioHelperr.GetAddress();
+  // DioHelperr.GetAddress();
   DioHelper.init();
   runApp(const MyApp());
   HttpOverrides.global = MyHttpOverrides();}

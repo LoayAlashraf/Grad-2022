@@ -138,7 +138,7 @@ class _CategoryProductsScreenState extends State<CategoryProductsScreen> {
                                     });
                                     if (ProductCategoryList[index]!.inFav == true){
                                       ShopCubit.get(context).changeFav(
-                                        userId=2,
+                                        userId=loginuserId,
                                         productId=ProductCategoryList[index].id,
                                         productName=ProductCategoryList[index].name.toString(),
                                         productImage=ProductCategoryList[index].image.toString(),
@@ -154,7 +154,7 @@ class _CategoryProductsScreenState extends State<CategoryProductsScreen> {
                                           ,query:
                                           {
                                             "Id": ProductList[index].id,
-                                            "UserId" : 2
+                                            "UserId" : loginuserId
                                           }
                                       ).then((value) {
                                         print('remove done');

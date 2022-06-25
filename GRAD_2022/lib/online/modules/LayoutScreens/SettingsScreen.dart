@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:grad_2022/shared/variables.dart';
 
+import '../../../inside/modules/login_page/login_page.dart';
 import '../../../shared/components/components.dart';
 import '../Address_Screen/Address_Screen.dart';
 import 'MyCart.dart';
@@ -43,7 +45,11 @@ class SettingsScreen extends StatelessWidget {
               SizedBox(height: 20,),
               defaultButton(
                   text: 'LogOut',
-                  function: () {}),
+                  function: ()
+                  {
+                    loginuserId = 0 ;
+                    navigateTo(context, LoginScreen());
+                  }),
             ],
           ),
         ),

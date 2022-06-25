@@ -98,7 +98,7 @@ class DioHelperr
         url: FindAddresseUserId,
     query:
     {
-      "UserId":2
+      "UserId":loginuserId
     }
     ).then((value)
     {
@@ -122,7 +122,7 @@ class DioHelperr
       detailsimage = productdetailsmodel!.image.toString();
       //print(detailsimage.toString());
        detailsname=productdetailsmodel!.name.toString();
-      detailscost=productdetailsmodel!.cost;
+      detailscost=productdetailsmodel!.cost?.toInt();
       detailsdescription=productdetailsmodel!.description.toString();
       detailsdiscount=productdetailsmodel!.discount;
       detailscount=productdetailsmodel!.count;

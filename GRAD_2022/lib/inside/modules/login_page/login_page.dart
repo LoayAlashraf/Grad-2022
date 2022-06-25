@@ -24,6 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue,
         centerTitle: true,
         title: Text(
           'EASE Mall',
@@ -169,7 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 builder: (context) => RegistrationPage(),
                               ));
                         },
-                        child: Text('Sign up here'))
+                        child: Text('Sign up here' ,style: TextStyle(color: Colors.blue),))
                   ],
                 )
               ],

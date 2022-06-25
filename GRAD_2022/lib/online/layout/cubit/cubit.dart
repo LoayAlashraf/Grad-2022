@@ -161,7 +161,7 @@ class ShopCubit extends Cubit<ShopState>
     DioHelperr.getData(
       url: findfavbyuserid,
         query: {
-        "UserId":2
+        "UserId":loginuserId
         }).then((value)
     {
       for(int i=0;i<value!.data.length;i++){
@@ -190,14 +190,14 @@ class ShopCubit extends Cubit<ShopState>
     DioHelperr.getData(
         url: FindCartByUserID,
         query: {
-          "UserId":2
+          "UserId":loginuserId
         }).then((value)
     {
       CartModelByUserIdList.clear();
       for(int i=0;i<value!.data.length;i++){
         cartModel =CartModel.fromJson(value.data[i]);
         CartModelByUserIdList.add(cartModel!);
-        user_total+=int.parse(cartModel!.productCost.toString())-(int.parse(cartModel!.productCost!.toString())*(int.parse(cartModel!.productDiscount.toString())/100));
+        user_total+=double.parse(cartModel!.productCost.toString())-(double.parse(cartModel!.productCost!.toString())*(double.parse(cartModel!.productDiscount.toString())/100));
         //printFullText(favModelByUserId!.productName.toString());
         //printFullText(favModelByUserId0!.productId.toString());
       }

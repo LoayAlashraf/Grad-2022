@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../Network/end_point.dart';
 import '../../../Network/remote/dioo_helper.dart';
+import '../../../shared/variables.dart';
 import '../Address_Screen/Address_Screen.dart';
 
 class AddAddressScreen extends StatelessWidget
@@ -208,7 +209,7 @@ class AddAddressScreen extends StatelessWidget
                         url: AddressAdd,
                         data:
                         {
-                          "userId": 2,
+                          "userId": loginuserId,
                           "location": '${latitude} ${longitude}',
                           "myAddress": '${address}',
                           "label": LabelController.text.toString(),

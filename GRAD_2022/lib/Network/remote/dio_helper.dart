@@ -86,6 +86,8 @@ class DioHelper {
       "password": loginModel.password
     }).then((value) {
       loginResponse = LoginResponse.fromJson(value.data);
+      loginuserId = loginResponse!.id;
+      print('login done -- user id = ${loginuserId}');
     }).catchError((error) {
       print(error.toString());
     });

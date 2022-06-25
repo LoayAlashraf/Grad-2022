@@ -147,8 +147,9 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                           ProductList[index]!.inFav = !ProductList[index]!.inFav ;
                                         });
                                         if (ProductList[index]!.inFav == true){
+                                          print(loginuserId);
                                         ShopCubit.get(context).changeFav(
-                                            userId=2,
+                                            userId=loginuserId,
                                             productId=ProductList[index].id,
                                             productName=ProductList[index].name.toString(),
                                             productImage=ProductList[index].image.toString(),
@@ -157,14 +158,15 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                             producCount=ProductList[index].count.toString(),
                                             is_Cart=false,
                                             );
-                                        print(ProductList[index]!.inFav);
+                                        //print(ProductList[index]!.inFav);
+                                          print('add product to fav done');
                                         }
                                         else{
                                           DioHelperr.postData(url: DeleteByProductIdAndUserId
                                               ,query:
                                               {
                                                 "Id": ProductList[index].id,
-                                                "UserId" : 2
+                                                "UserId" : loginuserId
                                               }
                                               ).then((value) {
                                                 print('remove done');
