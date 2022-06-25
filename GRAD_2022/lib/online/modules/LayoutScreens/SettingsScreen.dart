@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grad_2022/shared/variables.dart';
 
 import '../../../inside/modules/login_page/login_page.dart';
+import '../../../inside/modules/welcome_page/welcome_page.dart';
 import '../../../shared/components/components.dart';
 import '../Address_Screen/Address_Screen.dart';
 import 'MyCart.dart';
@@ -48,7 +49,7 @@ class SettingsScreen extends StatelessWidget {
                   function: ()
                   {
                     loginuserId = null ;
-                    navigateTo(context, LoginScreen());
+                    navigateAndFinish(context, WelcomePage());
                   }),
             ],
           ),

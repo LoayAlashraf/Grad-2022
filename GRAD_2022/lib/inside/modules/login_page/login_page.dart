@@ -14,6 +14,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
   final _formKey = GlobalKey<FormState>();
 
   bool secureP = true;
@@ -53,6 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 20.0,
                 ),
                 TextFormField(
+
                   controller: email,
                   onFieldSubmitted: (Value) {
                     print(Value);
