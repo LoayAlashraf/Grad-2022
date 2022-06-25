@@ -47,7 +47,7 @@ class SettingsScreen extends StatelessWidget {
                   text: 'LogOut',
                   function: ()
                   {
-                    loginuserId = 0 ;
+                    loginuserId = null ;
                     navigateTo(context, LoginScreen());
                   }),
             ],
