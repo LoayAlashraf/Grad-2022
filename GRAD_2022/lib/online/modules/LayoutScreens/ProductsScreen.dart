@@ -1,8 +1,6 @@
 import 'package:conditional_builder_rec/conditional_builder_rec.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../Network/end_point.dart';
 import '../../../Network/remote/dioo_helper.dart';
 import '../../../shared/components/components.dart';
@@ -121,12 +119,25 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                     ),
                                   ),
                                   Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      textBaseline: TextBaseline.alphabetic,
                                     children: [
                                       Text((ProductList[index]!.cost-((ProductList[index]!.discount/100)*ProductList[index]!.cost)).toStringAsFixed(2),
                                         style: TextStyle(
                                           fontSize: 14.0,
                                           color: Colors.blue,
-                                      )),
+                                      )
+                                      ),
+                                      Text(
+                                        'EGP',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 9.0 ,
+                                            color: Colors.black54
+                                        ),
+                                      ),
                                       SizedBox(width:5.0 ,),
                                       Spacer(),
                                       IconButton(onPressed: ()
@@ -175,12 +186,28 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                     ],
                                   ),
                                   if(ProductList[index]!.discount != 0)
-                                    Text(ProductList[index]!.cost.toString(),
-                                      style: TextStyle(
-                                        fontSize: 12.0,
-                                        color: Colors.grey,
-                                        decoration: TextDecoration.lineThrough,
-                                      ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      textBaseline: TextBaseline.alphabetic,
+                                      children: [
+                                        Text(ProductList[index]!.cost.toString(),
+                                          style: TextStyle(
+                                            fontSize: 12.0,
+                                            color: Colors.grey,
+                                            decoration: TextDecoration.lineThrough,
+                                          ),
+                                        ),
+                                        Text(
+                                          'EGP',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 9.0 ,
+                                              color: Colors.black54
+                                          ),
+                                        ),
+                                      ],
                                     ),
 
                                 ],),

@@ -38,7 +38,7 @@ class ShopLayout extends StatelessWidget {
           ),
           body: cubit.bottomScreen[cubit.currentIndex],
           bottomNavigationBar: BottomNavigationBar(
-            fixedColor: Colors.blue,
+            fixedColor: Colors.deepOrange,
             unselectedItemColor: Colors.grey,
             onTap: (index)
             {

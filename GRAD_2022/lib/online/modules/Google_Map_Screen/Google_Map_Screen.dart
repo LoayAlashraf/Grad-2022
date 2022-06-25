@@ -8,28 +8,14 @@ import '../Add_Address_Screen/Add_Address_Screen.dart';
 import '../Address_Screen/Address_Screen.dart';
 
 
-void main() {
-  runApp(Google_map_Screen());
-}
-
-class Google_map_Screen extends StatelessWidget {
+class Google_map_Screen extends StatefulWidget {
+  const Google_map_Screen({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _Google_map_Screen createState() => _Google_map_Screen();
 }
 
 
-class _MyHomePageState extends State<MyHomePage> {
+class _Google_map_Screen extends State<Google_map_Screen> {
 
 
   final _controller = Completer<GoogleMapController>();
@@ -47,12 +33,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: ()
-        {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => AddressScreen()));
-        },
-          icon: Icon(Icons.arrow_back),
-        ),
         title: Text('Choose your location'),),
       body: Stack(
         alignment: Alignment.topCenter,
@@ -60,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
           MapPicker(
             // pass icon widget
             iconWidget: Icon(Icons.location_on,
-              color: Colors.black,
+              color: Colors.deepOrange,
               size: 40,
             ),
 
@@ -147,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 style: ButtonStyle(
                   backgroundColor:
-                  MaterialStateProperty.all<Color>(Colors.blue),
+                  MaterialStateProperty.all<Color>(Colors.deepOrange),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0),

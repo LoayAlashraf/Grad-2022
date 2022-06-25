@@ -140,7 +140,24 @@ class _MyCartScreenState extends State<MyCartScreen> {
                                                         vertical: kDefaultpadding / 5, // 5 px padding
                                                       ),
                                                       child:
-                                                      Center(child: Text('Price = ${(int.parse(CartModelByUserIdList[index].productCost.toString())-((int.parse(CartModelByUserIdList[index].productDiscount.toString())/100)*int.parse(CartModelByUserIdList[index].productDiscount.toString()))).toStringAsFixed(2)}')),
+                                                      Center(child: Row(
+                                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                                        textBaseline: TextBaseline.alphabetic,
+                                                        children: [
+                                                          Text('Price ='),
+                                                          Text('${(int.parse(CartModelByUserIdList[index].productCost.toString())-((int.parse(CartModelByUserIdList[index].productDiscount.toString())/100)*int.parse(CartModelByUserIdList[index].productDiscount.toString()))).toStringAsFixed(2)}',
+                                                            style: TextStyle(color: Colors.blue,),),
+                                                          Text(
+                                                            'EGP',
+                                                            textAlign: TextAlign.center,
+                                                            style: TextStyle(
+                                                                fontWeight: FontWeight.bold,
+                                                                fontSize: 9.0 ,
+                                                                color: Colors.black54
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      )),
                                                     ),
                                                     if(int.parse(CartModelByUserIdList[index].productDiscount.toString()) !=0)
                                                       Padding(
@@ -149,13 +166,27 @@ class _MyCartScreenState extends State<MyCartScreen> {
                                                         vertical: kDefaultpadding / 5, // 5 px padding
                                                       ),
                                                       child:
-                                                      Center(child: Text('Old Price = ${CartModelByUserIdList[index].productCost.toString()}')),                                                    ),
-
-
-
-
-
-
+                                                      Center(child: Row(
+                                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                                        textBaseline: TextBaseline.alphabetic,
+                                                        children: [
+                                                          Text('Old Price ='),
+                                                          Text('${CartModelByUserIdList[index].productCost.toString()}',
+                                                            style: TextStyle(color: Colors.grey,decoration: TextDecoration.lineThrough),),
+                                                          Text(
+                                                            'EGP',
+                                                            textAlign: TextAlign.center,
+                                                            style: TextStyle(
+                                                                fontWeight: FontWeight.bold,
+                                                                fontSize: 9.0 ,
+                                                                color: Colors.black54
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      )
+                                                      )
+                                                        ,
+                                                      ),
                                                   ],
                                                 ),
                                               )
@@ -181,6 +212,7 @@ class _MyCartScreenState extends State<MyCartScreen> {
                                                         "Id": CartModelByUserIdList[index].id
                                                       },
                                                     ).then((value) {print('delete product from cart done sucsfully');}).catchError((error){print(error.toString());});
+                                                    //DioHelperr.GetCartData();
                                                   }),
                                               SizedBox(width: 7,),
                                               // icontext(
@@ -336,7 +368,7 @@ class _MyCartScreenState extends State<MyCartScreen> {
                             }
                             ).catchError((error){print(error.toString());});
                           },
-                          color: Colors.blue,
+                          color: Colors.deepOrange,
                           child: Text('APPLY',
                             style: TextStyle(
                               color: Colors.white,
@@ -355,7 +387,7 @@ class _MyCartScreenState extends State<MyCartScreen> {
                           Navigator.push(context, MaterialPageRoute(
                               builder: (context) => BuyConformScreen()));
                         },
-                        color: Colors.blue,
+                        color: Colors.deepOrange,
                         child: Text('Continue',
                           style: TextStyle(
                             color: Colors.white,

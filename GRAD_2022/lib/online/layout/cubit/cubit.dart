@@ -62,13 +62,15 @@ class ShopCubit extends Cubit<ShopState>
 
         //printFullText(productModelJson!.name.toString());
         //printFullText(productModelJson!.id.toString());
-        ProductList.forEach((element)
-        {
-          favorites.addAll({
-            element.id :element.inFav,});
+        // ProductList.forEach((element)
+        // {
+        //   favorites.addAll({
+        //     element.id :element.inFav,});
+        //
+        // });
 
-        });
       }
+      print ('get all product done ');
       emit(ShopSuccessHomeDataScreen());}
 
       ).catchError((error){
@@ -171,6 +173,12 @@ class ShopCubit extends Cubit<ShopState>
       emit(ShopErrorFavProductDataScreen());
     });
   }
+  // void GetCartdatabyuserid()
+  // {
+  // emit(ShopLoadingCartProductDataScreen());
+  // DioHelperr.GetCartData();
+  // print('cubit cart done');
+  // }
 
   void GetCartdatabyuserid()
   {
@@ -182,6 +190,7 @@ class ShopCubit extends Cubit<ShopState>
           "UserId":2
         }).then((value)
     {
+      CartModelByUserIdList.clear();
       for(int i=0;i<value!.data.length;i++){
         cartModel =CartModel.fromJson(value.data[i]);
         CartModelByUserIdList.add(cartModel!);

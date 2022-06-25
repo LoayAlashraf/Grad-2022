@@ -159,7 +159,7 @@ class _BuyConformScreenState extends State<BuyConformScreen> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
                   ),
-                  primary: Colors.blue,
+                  primary: Colors.deepOrange,
                 ),
                 child: Container(
                   margin: const EdgeInsets.all(15),

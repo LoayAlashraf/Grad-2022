@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 
 import '../../online/models/AddProductToCartModel.dart';
 import '../../online/models/AddressModel.dart';
+import '../../online/models/CartModel.dart';
 import '../../online/models/FavModel.dart';
 import '../../online/models/productdetailsmodel.dart';
 import '../../shared/variables.dart';
@@ -129,6 +130,29 @@ class DioHelperr
     }).catchError((error){
       print(error.toString());});
   }
+  // static Future<Response?>GetCartData()async
+  // {
+  //   await DioHelperr.getData(
+  //       url: FindCartByUserID,
+  //       query: {
+  //         "UserId":2
+  //       }).then((value)async
+  //   {
+  //     CartModelByUserIdList.clear();
+  //      for(int i=0;i<value!.data.length;i++){
+  //       cartModel =CartModel.fromJson(value.data[i]);
+  //       CartModelByUserIdList.add(cartModel!);
+  //       user_total+=int.parse(cartModel!.productCost.toString())-(int.parse(cartModel!.productCost!.toString())*(int.parse(cartModel!.productDiscount.toString())/100));
+  //       //printFullText(favModelByUserId!.productName.toString());
+  //       //printFullText(favModelByUserId0!.productId.toString());
+  //       print('get cart data done');
+  //     }        print(CartModelByUserIdList.toString());
+  //
+  //   }).catchError((error){
+  //     print(error.toString());
+  //   });
+  // }
+
 
 
 

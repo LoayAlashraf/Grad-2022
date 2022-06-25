@@ -10,8 +10,13 @@ import '../../layout/cubit/cubit.dart';
 import '../../layout/cubit/states.dart';
 import '../Details_Screen/details_screen.dart';
 
-class FavScreen extends StatelessWidget {
+class FavScreen extends StatefulWidget {
 
+  @override
+  State<FavScreen> createState() => _FavScreenState();
+}
+
+class _FavScreenState extends State<FavScreen> {
   @override
   Widget build(BuildContext context) {
     FavModelByUserIdList.clear();
@@ -35,6 +40,7 @@ class FavScreen extends StatelessWidget {
     );
 
   }
+
   Widget FavWidget(FavModelByUserIdList,context,size) => Column(
 
     children: [
@@ -135,6 +141,7 @@ class FavScreen extends StatelessWidget {
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
 
+
                                         ),
 
                                         Padding(
@@ -143,7 +150,28 @@ class FavScreen extends StatelessWidget {
                                             vertical: kDefaultpadding / 5, // 5 px padding
                                           ),
                                           child:
-                                          Center(child: Text('price =${(int.parse(FavModelByUserIdList[index]!.productCost)-((int.parse(FavModelByUserIdList[index]!.productDiscount)/100)*int.parse(FavModelByUserIdList[index]!.productDiscount))).toStringAsFixed(2)}')),
+                                          Center(
+                                            child: Row(
+                                              crossAxisAlignment: CrossAxisAlignment.end,
+                                              textBaseline: TextBaseline.alphabetic,
+                                              children: [
+                                                Text('Price ='),
+                                                Text(
+                                                    '${(int.parse(FavModelByUserIdList[index]!.productCost)-((int.parse(FavModelByUserIdList[index]!.productDiscount)/100)*int.parse(FavModelByUserIdList[index]!.productDiscount))).toStringAsFixed(2)}',
+                                                style: TextStyle(color: Colors.blue),
+                                                ),
+                                                Text(
+                                                  'EGP',
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 9.0 ,
+                                                      color: Colors.black54
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                         ),
                                         if(int.parse(FavModelByUserIdList[index].productDiscount) != 0)
                                         Padding(
@@ -152,7 +180,24 @@ class FavScreen extends StatelessWidget {
                                             vertical: kDefaultpadding / 5, // 5 px padding
                                           ),
                                           child:
-                                          Center(child: Text('Old Price =${FavModelByUserIdList[index].productCost.toString()}')),
+                                          Center(child: Row(
+                                            crossAxisAlignment: CrossAxisAlignment.end,
+                                            textBaseline: TextBaseline.alphabetic,
+                                            children: [
+                                              Text('Old Price ='),
+                                              Text('${FavModelByUserIdList[index].productCost.toString()}',
+                                              style: TextStyle(color: Colors.grey,decoration: TextDecoration.lineThrough),),
+                                              Text(
+                                                'EGP',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 9.0 ,
+                                                    color: Colors.black54
+                                                ),
+                                              ),
+                                            ],
+                                          )),
                                         ),
                                       ],
                                     ),
@@ -182,7 +227,7 @@ class FavScreen extends StatelessWidget {
                                   icontext(
                                       Textt: 'Add to My Cart',
                                       icon: Icons.add_shopping_cart,
-                                      onTap: () 
+                                      onTap: ()
                                       {
                                         DioHelperr.addToCart(
                                             userId=2,

@@ -128,7 +128,8 @@ Widget icontext ({
 
       children: [
 
-        Icon(icon
+        Icon(icon,color: Colors.deepOrange,
+
 
         ),
 
@@ -141,6 +142,7 @@ Widget icontext ({
         Text(
 
           Textt,
+          style: TextStyle( color: Colors.deepOrange),
 
         ),
 
@@ -152,7 +154,7 @@ Widget icontext ({
 );
 Widget defaultButton({
   double width = double.infinity,
-  Color background = Colors.blue,
+  Color background = Colors.deepOrange,
   bool isUpperCase = true,
   double radius = 3.0,
   required Function() function,
