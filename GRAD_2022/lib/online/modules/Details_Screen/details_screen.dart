@@ -81,7 +81,7 @@ class DetailsScreen extends StatelessWidget {
                               ),
                               Row(
                                 children: [
-                                  Text("price ="'${(detailscost!-(detailsdiscount!/100)*detailscost!).toStringAsFixed(2)}'
+                                  Text("price ="'${(detailscost!-(detailsdiscount!*detailscost!)/100).toStringAsFixed(2)}'
                                     ,
                                     style: TextStyle(
                                       fontSize: 20.0,
@@ -96,7 +96,7 @@ class DetailsScreen extends StatelessWidget {
                                       onTap: ()
                                       {
                                         DioHelperr.addToCart(
-                                            userId=2,
+                                            userId=loginuserId,
                                             productId=productdetalsid,
                                             productName=detailsname,
                                             productImage=detailsimage,

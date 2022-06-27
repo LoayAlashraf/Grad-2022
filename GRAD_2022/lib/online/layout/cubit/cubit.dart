@@ -152,13 +152,12 @@ class ShopCubit extends Cubit<ShopState>
     // }
   }
 
-  FavModelByUserId? favModelByUserId;
 
-  void getfavdatabyuserid()
-  {
+  Future<void> getfavdatabyuserid()
+  async {
     emit(ShopLoadingFavProductDataScreen());
-
-    DioHelperr.getData(
+    FavModelByUserIdList.clear();
+    await DioHelperr.getData(
       url: findfavbyuserid,
         query: {
         "UserId":loginuserId
@@ -183,21 +182,21 @@ class ShopCubit extends Cubit<ShopState>
   // print('cubit cart done');
   // }
 
-  void GetCartdatabyuserid()
-  {
+  Future<void> GetCartdatabyuserid()
+  async {
     emit(ShopLoadingCartProductDataScreen());
-
-    DioHelperr.getData(
+    CartModelByUserIdList.clear();
+    user_total=0;
+    await DioHelperr.getData(
         url: FindCartByUserID,
         query: {
           "UserId":loginuserId
         }).then((value)
     {
-      CartModelByUserIdList.clear();
       for(int i=0;i<value!.data.length;i++){
         cartModel =CartModel.fromJson(value.data[i]);
         CartModelByUserIdList.add(cartModel!);
-        user_total+=double.parse(cartModel!.productCost.toString())-(double.parse(cartModel!.productCost!.toString())*(double.parse(cartModel!.productDiscount.toString())/100));
+        user_total+=double.parse(cartModel!.productCost.toString())-((double.parse(cartModel!.productCost!.toString())*double.parse(cartModel!.productDiscount.toString()))/100);
         //printFullText(favModelByUserId!.productName.toString());
         //printFullText(favModelByUserId0!.productId.toString());
       }

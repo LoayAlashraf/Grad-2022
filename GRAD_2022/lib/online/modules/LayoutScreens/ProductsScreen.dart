@@ -123,7 +123,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                       crossAxisAlignment: CrossAxisAlignment.end,
                                       textBaseline: TextBaseline.alphabetic,
                                     children: [
-                                      Text((ProductList[index]!.cost-((ProductList[index]!.discount/100)*ProductList[index]!.cost)).toStringAsFixed(2),
+                                      Text((ProductList[index]!.cost-((ProductList[index]!.discount*ProductList[index]!.cost)/100)).toStringAsFixed(2),
                                         style: TextStyle(
                                           fontSize: 14.0,
                                           color: Colors.blue,

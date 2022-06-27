@@ -75,7 +75,10 @@ List<ProductModelJson>fav2list=<ProductModelJson>[];
 
 double user_total =0;
 
-double coupon = 00.00 ;
 
 CouponNameModel? couponNameModel;
+
+FavModelByUserId? favModelByUserId;
+
+int Shipping_Fee =10 ;
 

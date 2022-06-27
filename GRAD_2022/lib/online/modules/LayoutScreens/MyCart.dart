@@ -19,10 +19,10 @@ class MyCartScreen extends StatefulWidget {
 
 class _MyCartScreenState extends State<MyCartScreen> {
   var CouponCode = TextEditingController();
+  int coupon = 0 ;
 
   @override
   Widget build(BuildContext context) {
-    CartModelByUserIdList.clear();
     MediaQueryData size = MediaQuery.of(context);
     return MultiBlocProvider(
         providers: [
@@ -145,7 +145,7 @@ class _MyCartScreenState extends State<MyCartScreen> {
                                                         textBaseline: TextBaseline.alphabetic,
                                                         children: [
                                                           Text('Price ='),
-                                                          Text('${(double.parse(CartModelByUserIdList[index].productCost.toString())-((double.parse(CartModelByUserIdList[index].productDiscount.toString())/100)*double.parse(CartModelByUserIdList[index].productDiscount.toString()))).toStringAsFixed(2)}',
+                                                          Text('${(double.parse(CartModelByUserIdList[index].productCost.toString())-((double.parse(CartModelByUserIdList[index].productDiscount.toString())*double.parse(CartModelByUserIdList[index].productCost.toString()))/100)).toStringAsFixed(2)}',
                                                             style: TextStyle(color: Colors.blue,),),
                                                           Text(
                                                             'EGP',
@@ -195,10 +195,10 @@ class _MyCartScreenState extends State<MyCartScreen> {
                                           Row(
                                             children: [
 
-                                              Padding(
-                                                padding: const EdgeInsets.symmetric(horizontal: 10),
-                                                child: ItemsNumber(),
-                                              ),
+                                              // Padding(
+                                              //   padding: const EdgeInsets.symmetric(horizontal: 10),
+                                              //   child: ItemsNumber(),
+                                              // ),
                                               Spacer(),
                                               icontext(
                                                   Textt: 'Remove',
@@ -215,6 +215,13 @@ class _MyCartScreenState extends State<MyCartScreen> {
                                                     {
                                                       print('delete product from cart done sucsfully');
                                                     }).catchError((error){print(error.toString());});
+                                                    user_total-=double.parse(CartModelByUserIdList[index].productCost.toString())-(double.parse(CartModelByUserIdList[index].productCost!.toString())*(double.parse(CartModelByUserIdList[index].productDiscount.toString())/100));
+                                                    CartModelByUserIdList.removeAt(index);
+                                                    setState(() {
+                                                      CartModelByUserIdList;
+                                                      user_total;
+                                                    });
+
                                                     // CartModelByUserIdList.remove(CartModelByUserIdList[index]);
                                                     // setState(() {
                                                     //   CartModelByUserIdList;
@@ -255,7 +262,7 @@ class _MyCartScreenState extends State<MyCartScreen> {
                           ),
                         ),
                         Expanded(
-                          child: Text('${user_total}',
+                          child: Text('${(user_total).toStringAsFixed(2)}',
                             textAlign: TextAlign.end,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
@@ -280,7 +287,7 @@ class _MyCartScreenState extends State<MyCartScreen> {
                           ),
                         ),
                         Expanded(
-                          child: Text('10.00',
+                          child: Text('${Shipping_Fee.toStringAsFixed(2)}',
                             textAlign: TextAlign.end,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
@@ -305,7 +312,7 @@ class _MyCartScreenState extends State<MyCartScreen> {
                           ),
                         ),
                         Expanded(
-                          child: Text('${((coupon*user_total)/100)}',
+                          child: Text('${((coupon*user_total)/100).toStringAsFixed(2)}',
                             textAlign: TextAlign.end,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
@@ -330,7 +337,7 @@ class _MyCartScreenState extends State<MyCartScreen> {
                           ),
                         ),
                         Expanded(
-                          child: Text('${(user_total-((coupon*user_total)/100))}',
+                          child: Text('${(user_total+Shipping_Fee -((coupon*user_total)/100)).toStringAsFixed(2)}',
                             textAlign: TextAlign.end,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
@@ -365,15 +372,19 @@ class _MyCartScreenState extends State<MyCartScreen> {
                                 url:DiscountCoupon,
                             query:
                             {
-                              "CouponName" : CouponCode
+                              "CouponName" : CouponCode.text
                             }
                             ).then((value)
                             {
-                              couponNameModel = CouponNameModel.fromJson(value!.data);
-                              coupon = couponNameModel!.discount as double;
+                              couponNameModel = CouponNameModel.fromJson(value!.data[0]);
+                              coupon = couponNameModel!.discount! ;
+                              print('enter copun done');
 
                             }
                             ).catchError((error){print(error.toString());});
+                            setState(() {
+                              coupon;
+                            });
                           },
                           color: Colors.deepOrange,
                           child: Text('APPLY',

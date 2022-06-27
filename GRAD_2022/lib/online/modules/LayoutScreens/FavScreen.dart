@@ -8,6 +8,7 @@ import '../../../shared/components/constants.dart';
 import '../../../shared/variables.dart';
 import '../../layout/cubit/cubit.dart';
 import '../../layout/cubit/states.dart';
+import '../../models/FavModelByUserID.dart';
 import '../Details_Screen/details_screen.dart';
 
 class FavScreen extends StatefulWidget {
@@ -19,7 +20,6 @@ class FavScreen extends StatefulWidget {
 class _FavScreenState extends State<FavScreen> {
   @override
   Widget build(BuildContext context) {
-    FavModelByUserIdList.clear();
     MediaQueryData size = MediaQuery.of(context);
     return MultiBlocProvider(
         providers: [
@@ -157,7 +157,7 @@ class _FavScreenState extends State<FavScreen> {
                                               children: [
                                                 Text('Price ='),
                                                 Text(
-                                                    '${(double.parse(FavModelByUserIdList[index]!.productCost)-((double.parse(FavModelByUserIdList[index]!.productDiscount)/100)*double.parse(FavModelByUserIdList[index]!.productDiscount))).toStringAsFixed(2)}',
+                                                    '${(double.parse(FavModelByUserIdList[index]!.productCost)-((double.parse(FavModelByUserIdList[index]!.productDiscount)*double.parse(FavModelByUserIdList[index]!.productCost))/100)).toStringAsFixed(2)}',
                                                 style: TextStyle(color: Colors.blue),
                                                 ),
                                                 Text(
@@ -226,12 +226,10 @@ class _FavScreenState extends State<FavScreen> {
                                         }).catchError((error) {
                                           print(error.toString());
                                         });
+                                        FavModelByUserIdList.removeAt(index);
                                         setState(() {
-                                          FavModelByUserIdList.removeAt(FavModelByUserIdList[index]);
+                                          FavModelByUserIdList;
                                         });
-                                        //FavModelByUserIdList.remove(FavModelByUserIdList[index]);
-                                        // print(FavModelByUserIdList);
-
                                       }),
                                   SizedBox(width: 7,),
                                   icontext(
@@ -246,7 +244,9 @@ class _FavScreenState extends State<FavScreen> {
                                             productImage=FavModelByUserIdList[index].productImage,
                                             productDiscount=FavModelByUserIdList[index].productDiscount,
                                             productCost=FavModelByUserIdList[index].productCost,
-                                            producCount=FavModelByUserIdList[index].producCount);
+                                            producCount=FavModelByUserIdList[index].producCount).then(
+                                                (value) {print('add to cart done ');}
+                                            ).catchError((error){print(error.toString());});
                                       }),
                                   SizedBox(width: 7,)
 
