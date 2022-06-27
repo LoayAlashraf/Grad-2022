@@ -120,6 +120,78 @@ class _AboutUsState extends State<AboutUs> {
 
                     ),
                   ),
+                  SizedBox(height: 12,),
+                  Text('Star Living – Exclusive Residential Apartments:',
+
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+
+                    ),
+                  ),
+                  SizedBox(height: 12,),
+                  Text('Star Living’s residential towers are comprised of apartments, duplexes and penthouses. Residents can enjoy all the benefits of the facilities and amenities they could want including 24-hour security, hotel services along with the best shopping and entertainment in Egypt.',
+
+                    style: TextStyle(
+                      fontSize: 15,
+
+
+                    ),
+                  ),
+                  SizedBox(height: 12,),
+                  Text('The Boutique Floors:',
+
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+
+                    ),
+                  ),
+                  SizedBox(height: 12,),
+                  Text('You will also find our uniquely designed last two floors creating a 40-suites boutique hotel style experience for the first time in Egypt within the Intercontinental Cairo Citystars hotel.',
+
+                    style: TextStyle(
+                      fontSize: 15,
+
+
+                    ),
+                  ),
+                  SizedBox(height: 12,),
+                  Text('Holiday Inn Cairo Citystars:',
+
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+
+                    ),
+                  ),
+                  SizedBox(height: 12,),
+                  Text('The Holiday Inn Cairo Citystars is the best Holiday Inn in the world. Whether you are staying for business or pleasure, the five star 311 room Holiday Inn Cairo Citystars offers its guest all the facilities, amenities and value they have come to know.',
+
+                    style: TextStyle(
+                      fontSize: 15,
+
+
+                    ),
+                  ),
+                  SizedBox(height: 12,),
+                  Text('Staybridge Suites Cairo Citystars:',
+
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+
+                    ),
+                  ),
+                  SizedBox(height: 12,),
+                  Text('The first of its kind outside the US and Canada, the hotel offers studios, suites and penthouses, giving guests all the comfort of a home away from home. The hotel is comprised of 140 fully equipped suites.',
+
+                    style: TextStyle(
+                      fontSize: 15,
+
+
+                    ),
+                  ),
                 ],
               ),
             ),

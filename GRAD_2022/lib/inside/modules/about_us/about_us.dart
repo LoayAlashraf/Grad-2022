@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grad_2022/inside/modules/about_us/about%20us.dart';
+import 'package:grad_2022/inside/modules/about_us/rules&regulations.dart';
+import 'package:grad_2022/inside/modules/about_us/work_hours.dart';
 
 class AboutUS extends StatelessWidget {
   const AboutUS({Key? key}) : super(key: key);
@@ -34,7 +36,10 @@ class AboutUS extends StatelessWidget {
             title: Text(
               'Working Hours',
             ),
-            onTap: () => {},
+            onTap: ()  {
+            Navigator.push(context,
+            MaterialPageRoute(builder: (context) => WorkingHours()));
+            },
           ),
           ListTile(
             leading: Icon(
@@ -43,7 +48,10 @@ class AboutUS extends StatelessWidget {
             title: Text(
               'Rules & Regulations',
             ),
-            onTap: () => {},
+            onTap: ()  {
+            Navigator.push(context,
+            MaterialPageRoute(builder: (context) => RulesRegulations()));
+            },
           ),
           ListTile(
             leading: Icon(
