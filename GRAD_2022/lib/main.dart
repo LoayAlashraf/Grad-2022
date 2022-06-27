@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
             return MaterialApp(
               home: startWidget,
               theme: ThemeData(
-                  primarySwatch: Colors.blue),
+                  primarySwatch: Colors.deepOrange),
               debugShowCheckedModeBanner: false,    );
             },
         ),

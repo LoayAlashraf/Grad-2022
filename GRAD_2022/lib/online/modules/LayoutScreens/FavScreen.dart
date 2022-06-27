@@ -211,17 +211,27 @@ class _FavScreenState extends State<FavScreen> {
                                       Textt: 'Remove',
                                       icon: Icons.remove_shopping_cart,
                                       onTap: ()
-                                      {
+                                      async {
                                         //print('productid = ${FavModelByUserIdList[index].productId}');
-                                        DioHelperr.postData(
+                                        await DioHelperr.postData(
                                           url: DeleteByProductIdAndUserId,
                                           query:
                                           {
-                                            "id": FavModelByUserIdList[index].productId,
-                                            "UserId" : loginuserId
-
+                                            "id": FavModelByUserIdList[index]
+                                                .productId,
+                                            "UserId": loginuserId
                                           },
-                                        );
+                                        ).then((value) {
+                                          print('remove done');
+                                        }).catchError((error) {
+                                          print(error.toString());
+                                        });
+                                        setState(() {
+                                          FavModelByUserIdList.removeAt(FavModelByUserIdList[index]);
+                                        });
+                                        //FavModelByUserIdList.remove(FavModelByUserIdList[index]);
+                                        // print(FavModelByUserIdList);
+
                                       }),
                                   SizedBox(width: 7,),
                                   icontext(

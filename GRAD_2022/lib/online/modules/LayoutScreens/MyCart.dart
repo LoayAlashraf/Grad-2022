@@ -211,7 +211,14 @@ class _MyCartScreenState extends State<MyCartScreen> {
                                                       {
                                                         "Id": CartModelByUserIdList[index].id
                                                       },
-                                                    ).then((value) {print('delete product from cart done sucsfully');}).catchError((error){print(error.toString());});
+                                                    ).then((value)
+                                                    {
+                                                      print('delete product from cart done sucsfully');
+                                                    }).catchError((error){print(error.toString());});
+                                                    // CartModelByUserIdList.remove(CartModelByUserIdList[index]);
+                                                    // setState(() {
+                                                    //   CartModelByUserIdList;
+                                                    // });
                                                     //DioHelperr.GetCartData();
                                                   }),
                                               SizedBox(width: 7,),
