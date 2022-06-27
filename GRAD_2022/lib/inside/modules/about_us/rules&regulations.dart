@@ -60,7 +60,7 @@ Food consumption in designated areas only (Restaurants / Food Court).
 Please, do not litter.
                          ''',
 
-              style: TextStyle(fontSize: 15.0 ,fontWeight:FontWeight.bold) ,
+              style: TextStyle(fontSize: 15.0 ,) ,
         ),
           ],),
         ),
