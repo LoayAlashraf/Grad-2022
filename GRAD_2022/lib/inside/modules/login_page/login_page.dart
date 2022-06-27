@@ -31,13 +31,6 @@ class _LoginScreenState extends State<LoginScreen> {
           'EASE Mall',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        actions: [
-          IconButton(
-              onPressed: () {
-                print('Hello');
-              },
-              icon: Icon(Icons.search_rounded))
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(30.0),
@@ -71,6 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     labelText: 'Email Address',
                     prefixIcon: Icon(Icons.email),
                     border: OutlineInputBorder(
+
                         borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
@@ -83,7 +77,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     if (value!.isEmpty) {
                       return 'Password must not be empty';
                     }
-                    ;
                     return null;
                   },
                   keyboardType: TextInputType.visiblePassword,
@@ -92,7 +85,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       labelText: 'Password',
                       prefixIcon: Icon(Icons.email),
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0)),
+                          borderRadius: BorderRadius.circular(5.0)
+                      ),
                       suffixIcon: IconButton(
                           onPressed: () {
                             secureP = !secureP;

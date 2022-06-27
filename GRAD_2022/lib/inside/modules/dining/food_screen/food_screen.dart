@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grad_2022/shared/variables.dart';
 
 import '../cafe_screen/cafe_screen.dart';
 
@@ -18,7 +19,7 @@ class FoodScreen extends StatelessWidget {
             title: Text('Cafes'),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CafeScreen()));
+                  MaterialPageRoute(builder: (context) => CafeScreen(din_id=1)));
             },
           ),
           SizedBox(
@@ -32,7 +33,7 @@ class FoodScreen extends StatelessWidget {
             title: Text('Restaurant'),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CafeScreen()));
+                  MaterialPageRoute(builder: (context) => CafeScreen(din_id=2)));
             },
           ),
           SizedBox(
@@ -46,7 +47,7 @@ class FoodScreen extends StatelessWidget {
             title: Text('FastFood'),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CafeScreen()));
+                  MaterialPageRoute(builder: (context) => CafeScreen(din_id=3)));
             },
           ),
           SizedBox(

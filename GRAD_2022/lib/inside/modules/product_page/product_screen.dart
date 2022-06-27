@@ -72,8 +72,7 @@ class _CafeScreenState extends State<ProductScreen> {
                                     width: double.infinity,
                                     height: 200.0,
                                   ),
-                                  if (productcategoryidlist[index]!.discount !=
-                                      0)
+                                  if (productcategoryidlist[index]!.discount != 0)
                                     Container(
                                       color: Colors.red,
                                       padding: EdgeInsets.symmetric(
@@ -107,15 +106,15 @@ class _CafeScreenState extends State<ProductScreen> {
                                     ),
                                     Row(
                                       children: [
-                                        Text(
-                                          productcategoryidlist[index]!
-                                              .cost
-                                              .toString(),
-                                          style: TextStyle(
-                                            fontSize: 12.0,
-                                            color: Colors.blue,
-                                          ),
+
+                                        SizedBox(
+                                          width: 5.0,
                                         ),
+                                        Text((productcategoryidlist[index].cost-((productcategoryidlist[index].discount/100)*productcategoryidlist[index]!.cost)).toStringAsFixed(2),
+                                            style: TextStyle(
+                                              fontSize: 12.0,
+                                              color: Colors.blue,
+                                            )),
                                         SizedBox(
                                           width: 5.0,
                                         ),
@@ -128,17 +127,10 @@ class _CafeScreenState extends State<ProductScreen> {
                                               fontSize: 9.0,
                                               color: Colors.black54),
                                         ),
-                                        SizedBox(
-                                          width: 5.0,
-                                        ),
-                                        if (productcategoryidlist[index]!
-                                                .discount
-                                                .toString() !=
-                                            0)
+                                        SizedBox(width:5.0 ,),
+                                        if (productcategoryidlist[index]!.discount.toString() != 0)
                                           Text(
-                                            productcategoryidlist[index]!
-                                                .cost
-                                                .toString(),
+                                            productcategoryidlist[index]!.cost.toString(),
                                             style: TextStyle(
                                               fontSize: 10.0,
                                               color: Colors.grey,

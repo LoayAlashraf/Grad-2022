@@ -3,7 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:latlng/latlng.dart';
 import 'package:map/map.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart'as UrlLauncher;
 
 import '../mall_page/mall_page.dart';
 
@@ -108,32 +108,14 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(
             tooltip: 'Call Us',
             onPressed: () {
-              setState(() {
-                _launchCaller() async {
-                  const url = "tel:+201018897947";
-                  if (await canLaunch(url)) {
-                    await launch(url);
-                  } else {
-                    throw 'Could not launch $url';
-                  }
-                }
-              });
+              UrlLauncher.launch("tel:+201018897947");
             },
             icon: Icon(Icons.phone),
           ),
           IconButton(
             tooltip: 'Mail Us',
             onPressed: () {
-              setState(() {
-                _launchCaller() async {
-                  const url = "mailto:elghareebsakr@gmail.com";
-                  if (await canLaunch(url)) {
-                    await launch(url);
-                  } else {
-                    throw 'Could not launch $url';
-                  }
-                }
-              });
+              UrlLauncher.launch("mailto:mailto:elghareebsakr@gmail.com");
             },
             icon: Icon(Icons.mail_outline),
           ),

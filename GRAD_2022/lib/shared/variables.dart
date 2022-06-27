@@ -1,4 +1,7 @@
 
+import 'package:grad_2022/inside/models/DiningResponse.dart';
+
+import '../inside/models/diningmodel.dart';
 import '../inside/models/gategoryidresponse.dart';
 import '../inside/models/loginResponse.dart';
 import '../inside/models/productResponse.dart';
@@ -16,10 +19,11 @@ import '../online/models/productdetailsmodel.dart';
 UserResponse? userResponse;
 LoginResponse? loginResponse;
 ProductResponse? productResponse;
+DiningIdResponse?diningIdResponse;
 List<GategoryIdResponse> productcategoryidlist = <GategoryIdResponse>[];
-
+List<DiningIdResponse>dininglist=<DiningIdResponse>[];
 int? cat_id;
-
+int?din_id;
 List<ProductModelJson> ProductList = <ProductModelJson>[];
 
 List<ProductModelJson> ProductCategoryList = <ProductModelJson>[];
@@ -47,8 +51,11 @@ List<FavModel>FAvList=<FavModel>[];
 var MyColor;
 
 int? productid;
-
-// String? detailsimage;
+int?diningid;
+int?diningdetailsid;
+DiningModel?diningModel;
+String? diningname,diningimage,dininglogo,diningphonenumber,diningemail,diningwebsite;
+int?dininglevel;
 String? detailsimage,detailsname,detailsdescription;
 int? productdetalsid,detailsdiscount,detailscount,detailscost;
 

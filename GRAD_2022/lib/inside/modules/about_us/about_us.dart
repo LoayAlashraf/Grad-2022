@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grad_2022/inside/modules/about_us/about%20us.dart';
 
 class AboutUS extends StatelessWidget {
   const AboutUS({Key? key}) : super(key: key);
@@ -21,7 +22,10 @@ class AboutUS extends StatelessWidget {
             title: Text(
               'About Us',
             ),
-            onTap: () => {},
+            onTap: ()  {
+            Navigator.push(context,
+                 MaterialPageRoute(builder: (context) => AboutUs()));
+            },
           ),
           ListTile(
             leading: Icon(

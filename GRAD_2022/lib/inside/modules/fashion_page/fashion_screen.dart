@@ -34,8 +34,8 @@ class FashionScreen extends StatelessWidget {
           ListTile(
             title: Text('Jewllery'),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CafeScreen()));
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => CafeScreen()));
             },
           ),
           SizedBox(
@@ -47,8 +47,8 @@ class FashionScreen extends StatelessWidget {
           ListTile(
             title: Text('Kid\'s Wear'),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CafeScreen()));
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => CafeScreen()));
             },
           ),
           SizedBox(
@@ -60,8 +60,8 @@ class FashionScreen extends StatelessWidget {
           ListTile(
             title: Text('ladies\' Wear'),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CafeScreen()));
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => CafeScreen()));
             },
           ),
           SizedBox(
@@ -73,8 +73,8 @@ class FashionScreen extends StatelessWidget {
           ListTile(
             title: Text('Lingerie'),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CafeScreen()));
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => CafeScreen()));
             },
           ),
           SizedBox(
@@ -116,8 +116,8 @@ class FashionScreen extends StatelessWidget {
           ListTile(
             title: Text('Scarves'),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CafeScreen()));
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => CafeScreen()));
             },
           ),
           SizedBox(
@@ -129,8 +129,8 @@ class FashionScreen extends StatelessWidget {
           ListTile(
             title: Text('Sports Wear'),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CafeScreen()));
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => CafeScreen()));
             },
           ),
           SizedBox(
@@ -142,8 +142,8 @@ class FashionScreen extends StatelessWidget {
           ListTile(
             title: Text('Watches'),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CafeScreen()));
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => CafeScreen()));
             },
           ),
           SizedBox(

@@ -1,7 +1,10 @@
 
 import 'package:flutter/material.dart';
-
+import 'package:grad_2022/inside/modules/dining/information_screen/gallery.dart';
+import 'package:grad_2022/shared/variables.dart';
+import 'package:url_launcher/url_launcher.dart'as UrlLauncher;
 import '../../mall_map_screen/mall_map_screen.dart';
+import 'package:share_plus/share_plus.dart';
 
 class InformationScreen extends StatefulWidget {
   @override
@@ -14,12 +17,13 @@ double tx = 0.25;
 class _InformationScreenState extends State<InformationScreen> {
   Color _iconColor = Colors.grey;
   IconData _iconShape = Icons.favorite_border;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Cafes'),
+          title: Text(diningname.toString()),
           centerTitle: true,
           backgroundColor: Colors.blueGrey,
         ),
@@ -29,7 +33,12 @@ class _InformationScreenState extends State<InformationScreen> {
               Stack(
                 alignment: AlignmentDirectional.bottomEnd,
                 children: [
-                  Image.asset('assets/images/zz.jpg'),
+          Image(
+          image: NetworkImage(
+          diningimage.toString(),
+        ),
+
+          ),
                   Container(
                     color: Colors.black.withOpacity(0.7),
                     padding: EdgeInsets.symmetric(
@@ -62,7 +71,11 @@ class _InformationScreenState extends State<InformationScreen> {
               ListTile(
                 leading: Container(
                   padding: EdgeInsets.all(2),
-                  child: Image.asset('assets/images/ll.jpeg'),
+                  child: Image(
+                    image: NetworkImage(
+                      dininglogo.toString(),
+                    ),
+                  ),
                 ),
                 trailing: IconButton(
                   icon: Icon(_iconShape),
@@ -83,7 +96,7 @@ class _InformationScreenState extends State<InformationScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "cafeshop",
+                     diningname.toString(),
                       style: TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
@@ -96,7 +109,7 @@ class _InformationScreenState extends State<InformationScreen> {
                           size: 15,
                         ),
                         Text(
-                          'Level0',
+                          'Level${dininglevel}',
                           style: TextStyle(color: Colors.orangeAccent),
                         ),
                       ],
@@ -128,7 +141,9 @@ class _InformationScreenState extends State<InformationScreen> {
                                   color: Colors.white,
                                 ),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                UrlLauncher.launch('tel:+${diningphonenumber.toString()}');
+                              },
                             ),
                           ),
                         ),
@@ -145,7 +160,9 @@ class _InformationScreenState extends State<InformationScreen> {
                                   color: Colors.white,
                                 ),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                UrlLauncher.launch('mailto:${diningemail}');
+                              },
                             ),
                           ),
                         ),
@@ -162,7 +179,9 @@ class _InformationScreenState extends State<InformationScreen> {
                                   color: Colors.white,
                                 ),
                               ),
-                              onPressed: () {},
+                              onPressed:(){
+                                UrlLauncher.launch('${diningwebsite}');
+                              },
                             ),
                           ),
                         ),
@@ -200,7 +219,9 @@ class _InformationScreenState extends State<InformationScreen> {
                                   color: Colors.white,
                                 ),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>GalleryPage()));
+                              },
                             ),
                           ),
                         ),
@@ -217,7 +238,9 @@ class _InformationScreenState extends State<InformationScreen> {
                                   color: Colors.white,
                                 ),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Share.share('${diningwebsite}', subject: 'Look what I made!');
+                              },
                             ),
                           ),
                         ),
@@ -265,3 +288,4 @@ class _InformationScreenState extends State<InformationScreen> {
     );
   }
 }
+

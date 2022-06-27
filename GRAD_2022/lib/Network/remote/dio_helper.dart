@@ -1,52 +1,7 @@
-//import 'dart:_http';
-
-// class DioHelper {
-//   static Dio? dio;
-//
-//   static init() {
-//     dio = Dio(
-//       BaseOptions(
-//         baseUrl: 'https://localhost:44315',
-//         receiveDataWhenStatusError: true,
-//       ),
-//     );
-//   }
-//
-// static Future<Response?> Add({required UserModel userModel}) async {
-//   (dio?.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
-//       (HttpClient dioClient) {
-//     dioClient.badCertificateCallback =
-//     ((X509Certificate cert, String host, int port) => true);
-//     return dioClient;
-//   };
-// return await dio?.post('/Inside/Add', data: {
-//   'id':userModel.id,
-// 'name': userModel.name,
-// 'phone': userModel.phone,
-// 'email': userModel.email,
-// 'password': userModel.password,
-// 'isactive': userModel.isactive,
-// }).then((value) {
-// userResponse = UserResponse.fromJson(value.data);
-// }).catchError((error) {
-// print(error.toString());
-// });
-//  }
-// static Future<Response?> Search({required LoginModel loginModel}) async {
-//
-//     return await dio?.post('/Inside/Search', data: {
-//
-//       'password': loginModel.password,
-//       'email': loginModel.email,
-//     }).then((value) {
-//       loginResponse = LoginResponse.fromJson(value.data);
-//     }).catchError((error) {
-//       print(error.toString());
-//     });
-//   }
-// }
 
 import 'package:dio/dio.dart';
+import 'package:grad_2022/inside/models/DiningResponse.dart';
+import 'package:grad_2022/inside/models/diningmodel.dart';
 
 import '../../inside/models/loginResponse.dart';
 import '../../inside/models/login_model.dart';
@@ -100,4 +55,21 @@ class DioHelper {
       queryParameters: query,
     );
   }
-}
+static Future<Response?> getdiningdetails()async{
+    return await DioHelper.FindByIdCategory(url: '/Dining/FindById',
+      query: {"Id":diningdetailsid,
+    }).then((value) {
+     diningModel=DiningModel.fromJson(value!.data);
+     diningname=diningModel!.name.toString();
+      diningimage=diningModel!.image.toString();
+      dininglogo=diningModel!.logo.toString();
+      dininglevel=diningModel!.level;
+      diningphonenumber=diningModel!.phonenumber.toString();
+     diningemail=diningModel!.email.toString();
+     diningwebsite=diningModel!.website.toString();
+     print(diningModel.toString());
+    }).catchError((error){
+      print(error.toString());});
+    }
+
+ }
