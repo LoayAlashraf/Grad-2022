@@ -20,7 +20,10 @@ Future<void> main() async {
   DioHelper.init();
   await CacheHelper.init();
 
+  loginuserId = CacheHelper.getData(key: 'loginuserId');
+
   Widget widget;
+  print(loginuserId);
   if(loginuserId == null)
   {
      widget = WelcomePage();

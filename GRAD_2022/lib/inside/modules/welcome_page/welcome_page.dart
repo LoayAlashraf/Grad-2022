@@ -5,7 +5,6 @@ import '../home_page/home_page.dart';
 import '../login_page/login_page.dart';
 
 class WelcomePage extends StatelessWidget {
-  const WelcomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,7 @@
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:grad_2022/Network/local/cache_helper.dart';
 import 'package:grad_2022/inside/models/DiningResponse.dart';
 import 'package:grad_2022/inside/models/diningmodel.dart';
 
@@ -43,9 +45,18 @@ class DioHelper {
       loginResponse = LoginResponse.fromJson(value.data);
       loginuserId = loginResponse!.id;
       print('login done -- user id = ${loginuserId}');
+      CacheHelper.saveData(key:'loginuserid', value: loginuserId).then((value)
+      {
+        print('login user id = ${value.toString()}');
+      }).catchError((error)
+      {
+        print(error.toString());
+      });
+
     }).catchError((error) {
       print(error.toString());
     });
+
   }
 
   static Future<Response?> FindByIdCategory(
