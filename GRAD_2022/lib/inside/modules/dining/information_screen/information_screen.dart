@@ -34,6 +34,7 @@ class _InformationScreenState extends State<InformationScreen> {
                 alignment: AlignmentDirectional.bottomEnd,
                 children: [
           Image(
+
           image: NetworkImage(
           diningimage.toString(),
         ),
