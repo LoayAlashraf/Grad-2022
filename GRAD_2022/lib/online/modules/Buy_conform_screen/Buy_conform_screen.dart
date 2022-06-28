@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/credit_card_form.dart';
 import 'package:flutter_credit_card/credit_card_model.dart';
 import 'package:grad_2022/Network/remote/dioo_helper.dart';
+import 'package:grad_2022/shared/components/components.dart';
 
 import '../../../Network/end_point.dart';
 import '../../../shared/variables.dart';
@@ -217,7 +218,10 @@ class _BuyConformScreenState extends State<BuyConformScreen> {
                   ),
                 ),
                 onPressed: () {
-
+                  if (loginuserId == null){
+                    Tost(Msg: 'Please Login First ',
+                      color: Colors.red);}
+                  else{
                   if( paymethod == paymentmetod.cash )
                     {
                       DioHelperr.postData(url: User_CartAdd,
@@ -247,10 +251,15 @@ class _BuyConformScreenState extends State<BuyConformScreen> {
                           } ).then((value)
                       {
                         print('your order in ur way');
+                        Tost(Msg: 'Your Order Into Your Way',
+                            color: Colors.green);
                       }).catchError((error)
                       {
                         print(error.toString());
+                        Tost(Msg: 'Some thing wrong please try again',
+                            color: Colors.red);
                       });
+
 
                     }
                   if( paymethod == paymentmetod.credit )
@@ -261,7 +270,7 @@ class _BuyConformScreenState extends State<BuyConformScreen> {
                       print('invalid!');
                     }
 
-                  }
+                  }}
 
                 },
               ),

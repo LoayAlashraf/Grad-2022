@@ -26,7 +26,12 @@ class _AddressScreenState extends State<AddressScreen> {
         actions: [
           MaterialButton(onPressed: ()
           {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Google_map_Screen()));
+            if(loginuserId == null)
+            {
+              Tost(Msg: 'Please Login First ',color: Colors.red);
+            }
+            else{
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Google_map_Screen()));}
           },
           child: Text('Add',style: TextStyle(color: Colors.white),),)
         ],

@@ -1,5 +1,6 @@
 import 'package:conditional_builder_rec/conditional_builder_rec.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Page extends StatelessWidget {
   const Page({Key? key}) : super(key: key);
@@ -193,3 +194,18 @@ void navigateAndFinish(
         return false;
       },
     );
+
+
+void Tost ({
+  required String Msg,
+  Color? color
+}) =>
+    Fluttertoast.showToast(
+    msg: Msg,
+    toastLength: Toast.LENGTH_SHORT,
+    gravity: ToastGravity.BOTTOM,
+    timeInSecForIosWeb: 7,
+    backgroundColor: color,
+    textColor: Colors.white,
+    fontSize: 16.0
+);

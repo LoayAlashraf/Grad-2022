@@ -142,8 +142,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                       Spacer(),
                                       IconButton(onPressed: ()
                                       {
+                                        if (loginuserId == null){
+                                          Tost(Msg: 'Please Login First ',
+                                            color: Colors.red);}
 
-                                        setState(() {
+                                        else {setState(() {
                                           ProductList[index]!.inFav = !ProductList[index]!.inFav ;
                                         });
                                         if (ProductList[index]!.inFav == true){
@@ -173,7 +176,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                               }).catchError((error){
                                                 print(error.toString());});
                                          // print(ProductList[index]!.inFav);
-                                       }
+                                       }}
                                       },
                                         icon: CircleAvatar(
                                         radius: 15.0,

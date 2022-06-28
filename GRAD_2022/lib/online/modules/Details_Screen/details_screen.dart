@@ -95,15 +95,22 @@ class DetailsScreen extends StatelessWidget {
                                       icon: Icons.add_shopping_cart,
                                       onTap: ()
                                       {
-                                        DioHelperr.addToCart(
-                                            userId=loginuserId,
-                                            productId=productdetalsid,
-                                            productName=detailsname,
-                                            productImage=detailsimage,
-                                            productDiscount=detailsdiscount.toString(),
-                                            productCost=detailscost.toString(),
-                                            producCount=detailscount.toString());
-                                      }),
+                                        if(loginuserId == null){
+                                          Tost(Msg: 'Please Login First ',
+                                            color: Colors.red);}
+                                        else {
+                                          DioHelperr.addToCart(
+                                              userId = loginuserId,
+                                              productId = productdetalsid,
+                                              productName = detailsname,
+                                              productImage = detailsimage,
+                                              productDiscount =
+                                                  detailsdiscount.toString(),
+                                              productCost =
+                                                  detailscost.toString(),
+                                              producCount =
+                                                  detailscount.toString());
+                                        }}),
                                 ],
                               ),
                               SizedBox(height: kDefaultpadding,),

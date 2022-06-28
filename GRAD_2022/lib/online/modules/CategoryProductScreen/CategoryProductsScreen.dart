@@ -23,7 +23,6 @@ class _CategoryProductsScreenState extends State<CategoryProductsScreen> {
   @override
   Widget build(BuildContext context) {
 
-    ProductCategoryList.clear();
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -132,9 +131,12 @@ class _CategoryProductsScreenState extends State<CategoryProductsScreen> {
                                   Spacer(),
                                   IconButton(onPressed: ()
                                   {
-
+                                    if(loginuserId == null){
+                                      Tost(Msg: 'Please Login First ',
+                                          color: Colors.red);}
+                                    else{
                                     setState(() {
-                                      ProductCategoryList[index]!.inFav = !ProductCategoryList[index]!.inFav ;
+                                      ProductCategoryList[index]!.inFav =! ProductCategoryList[index]!.inFav ;
                                     });
                                     if (ProductCategoryList[index]!.inFav == true){
                                       ShopCubit.get(context).changeFav(
@@ -162,10 +164,10 @@ class _CategoryProductsScreenState extends State<CategoryProductsScreen> {
                                         print(error.toString());});
                                       // print(ProductList[index]!.inFav);
                                     }
-                                  },
+                                  }},
                                     icon: CircleAvatar(
                                       radius: 15.0,
-                                      backgroundColor: Colors.grey,
+                                      backgroundColor: (ProductCategoryList[index]!.inFav== true)? Colors.red: Colors.grey,
                                       child: Icon(
                                         Icons.favorite_border,
                                         size: 14.0,

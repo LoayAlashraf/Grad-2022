@@ -86,8 +86,8 @@ class ShopCubit extends Cubit<ShopState>
 
   void getCategoryProductData(CategoryId)
   {
+    ProductCategoryList.clear();
     emit(ShopLoadingCategoryProductDataScreen());
-
     DioHelperr.getData(
       url: CategoryProducts,
       query: {
@@ -95,7 +95,6 @@ class ShopCubit extends Cubit<ShopState>
       }
     ).then((value) {
 
-      ProductCategoryList.clear();
       for(int i=0;i<value!.data.length;i++){
         productModelJson =ProductModelJson.fromJson(value.data[i]);
         ProductCategoryList.add(productModelJson!);

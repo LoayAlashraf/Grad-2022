@@ -45,7 +45,7 @@ class DioHelper {
       loginResponse = LoginResponse.fromJson(value.data);
       loginuserId = loginResponse!.id;
       print('login done -- user id = ${loginuserId}');
-      CacheHelper.saveData(key:'loginuserid', value: loginuserId).then((value)
+      CacheHelper.saveData(key:'loginuserid', value: loginuserId!).then((value)
       {
         print('login user id = ${value.toString()}');
       }).catchError((error)
