@@ -16,7 +16,7 @@ class CafeScreen extends StatefulWidget {
 class _CafeScreenState extends State<CafeScreen> {
   _CafeScreenState(din_id){}
  static List<bool> _isFavorited = List.filled(dininglist.length, false);
-  List<String> din=['Cafes','Restaurant','FastFood'];
+  List<String> din=['Cafes','Restaurant','FastFood','ATM'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

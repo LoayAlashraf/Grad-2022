@@ -2,9 +2,11 @@ import 'package:conditional_builder_rec/conditional_builder_rec.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../Network/remote/dio_helper.dart';
 import '../../../shared/variables.dart';
 import 'cubit/cubit.dart';
 import 'cubit/state.dart';
+import 'details _screen.dart';
 
 class ProductScreen extends StatefulWidget {
   ProductScreen(cat_id) {}
@@ -55,97 +57,104 @@ class _CafeScreenState extends State<ProductScreen> {
                 childAspectRatio: 1 / 1.58,
                 children: List.generate(
                     productcategoryidlist!.length,
-                    (index) => Container(
-                          color: Colors.white,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Stack(
-                                alignment: AlignmentDirectional.bottomStart,
-                                children: [
-                                  Image(
-                                    image: NetworkImage(
-                                      productcategoryidlist[index]!
-                                          .image
-                                          .toString(),
-                                    ),
-                                    width: double.infinity,
-                                    height: 200.0,
-                                  ),
-                                  if (productcategoryidlist[index]!.discount != 0)
-                                    Container(
-                                      color: Colors.red,
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: 5.0,
-                                      ),
-                                      child: Text(
-                                        'DISCOUNT',
-                                        style: TextStyle(
-                                          fontSize: 8.0,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                ],
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(12.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                    (index) => InkWell(
+                      onTap: ()async{
+                        productdetalsid=productid=productcategoryidlist[index]!.id;
+                        await DioHelper.GetDitailsData();
+                         Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductDetailPage()));
+                      },
+                      child: Container(
+                            color: Colors.white,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Stack(
+                                  alignment: AlignmentDirectional.bottomStart,
                                   children: [
-                                    Text(
-                                      productcategoryidlist[index]!
-                                          .name
-                                          .toString(),
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                        fontSize: 14.0,
-                                        height: 1.3,
+                                    Image(
+                                      image: NetworkImage(
+                                        productcategoryidlist[index]!
+                                            .image
+                                            .toString(),
                                       ),
+                                      width: double.infinity,
+                                      height: 200.0,
                                     ),
-                                    Row(
-                                      children: [
-
-                                        SizedBox(
-                                          width: 5.0,
+                                    if (productcategoryidlist[index]!.discount != 0)
+                                      Container(
+                                        color: Colors.red,
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: 5.0,
                                         ),
-                                        Text((productcategoryidlist[index].cost-((productcategoryidlist[index].discount/100)*productcategoryidlist[index]!.cost)).toStringAsFixed(2),
-                                            style: TextStyle(
-                                              fontSize: 12.0,
-                                              color: Colors.blue,
-                                            )),
-                                        SizedBox(
-                                          width: 5.0,
-                                        ),
-                                        Text(
-                                          'EGP',
-                                          maxLines: 2,
-                                          textAlign: TextAlign.center,
+                                        child: Text(
+                                          'DISCOUNT',
                                           style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 9.0,
-                                              color: Colors.black54),
-                                        ),
-                                        SizedBox(width:5.0 ,),
-                                        if (productcategoryidlist[index]!.discount.toString() != 0)
-                                          Text(
-                                            productcategoryidlist[index]!.cost.toString(),
-                                            style: TextStyle(
-                                              fontSize: 10.0,
-                                              color: Colors.grey,
-                                              decoration:
-                                                  TextDecoration.lineThrough,
-                                            ),
+                                            fontSize: 8.0,
+                                            color: Colors.white,
                                           ),
-                                      ],
-                                    ),
+                                        ),
+                                      ),
                                   ],
                                 ),
-                              ),
-                            ],
+                                Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        productcategoryidlist[index]!
+                                            .name
+                                            .toString(),
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          fontSize: 14.0,
+                                          height: 1.3,
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+
+                                          SizedBox(
+                                            width: 5.0,
+                                          ),
+                                          Text((productcategoryidlist[index].cost-((productcategoryidlist[index].discount/100)*productcategoryidlist[index]!.cost)).toStringAsFixed(2),
+                                              style: TextStyle(
+                                                fontSize: 12.0,
+                                                color: Colors.blue,
+                                              )),
+                                          SizedBox(
+                                            width: 5.0,
+                                          ),
+                                          Text(
+                                            'EGP',
+                                            maxLines: 2,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 9.0,
+                                                color: Colors.black54),
+                                          ),
+                                          SizedBox(width:5.0 ,),
+                                          if (productcategoryidlist[index]!.discount.toString() != 0)
+                                            Text(
+                                              productcategoryidlist[index]!.cost.toString(),
+                                              style: TextStyle(
+                                                fontSize: 10.0,
+                                                color: Colors.grey,
+                                                decoration:
+                                                    TextDecoration.lineThrough,
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        )),
+                    )),
               ),
             ),
           ],

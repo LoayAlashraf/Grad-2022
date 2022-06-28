@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grad_2022/inside/modules/about_us/about%20us.dart';
+import 'package:grad_2022/inside/modules/about_us/privacy%20policiy.dart';
 import 'package:grad_2022/inside/modules/about_us/rules&regulations.dart';
+import 'package:grad_2022/inside/modules/about_us/terms&conditions.dart';
 import 'package:grad_2022/inside/modules/about_us/work_hours.dart';
 
 class AboutUS extends StatelessWidget {
@@ -60,7 +62,10 @@ class AboutUS extends StatelessWidget {
             title: Text(
               'Terms & Conditions',
             ),
-            onTap: () => {},
+            onTap: () {
+            Navigator.push(context,
+            MaterialPageRoute(builder: (context) => TermsConditions()));
+            },
           ),
           ListTile(
             leading: Icon(
@@ -69,7 +74,10 @@ class AboutUS extends StatelessWidget {
             title: Text(
               'Privacy Policiy',
             ),
-            onTap: () => {},
+            onTap: ()  {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => PrivacyPoliciy()));
+            },
           ),
         ],
       ),

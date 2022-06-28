@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:grad_2022/Network/local/cache_helper.dart';
 import 'package:grad_2022/inside/models/DiningResponse.dart';
 import 'package:grad_2022/inside/models/diningmodel.dart';
+import 'package:grad_2022/online/models/productdetailsmodel.dart';
 
 import '../../inside/models/loginResponse.dart';
 import '../../inside/models/login_model.dart';
@@ -82,5 +83,23 @@ static Future<Response?> getdiningdetails()async{
     }).catchError((error){
       print(error.toString());});
     }
+  static Future<Response?>GetDitailsData()async
+  {
+    return await DioHelper.FindByIdCategory(url: '/Products/FindById',
+        query: {
+          "Id":productdetalsid
+        }).then((value)
+    {
 
+      productdetailsmodel=Productdetailsmodel.fromJson(value!.data);
+      detailsimage = productdetailsmodel!.image.toString();
+      detailsname=productdetailsmodel!.name.toString();
+      detailscost=productdetailsmodel!.cost?.toInt();
+      detailsdescription=productdetailsmodel!.description.toString();
+      detailsdiscount=productdetailsmodel!.discount;
+      detailscount=productdetailsmodel!.count;
+      print (productdetailsmodel.toString());
+    }).catchError((error){
+      print(error.toString());});
+  }
  }
