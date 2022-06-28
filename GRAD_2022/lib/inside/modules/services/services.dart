@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:grad_2022/inside/modules/services/parking.dart';
+import 'package:grad_2022/inside/modules/services/wheel%20chairs.dart';
+import 'package:grad_2022/inside/modules/services/wifi.dart';
+
+import '../../../shared/variables.dart';
+import '../dining/cafe_screen/cafe_screen.dart';
 
 class ServicesPage extends StatelessWidget {
   const ServicesPage({Key? key}) : super(key: key);
@@ -21,7 +27,10 @@ class ServicesPage extends StatelessWidget {
             title: Text(
               'Free Wi-Fi Connection',
             ),
-            onTap: () => {},
+            onTap: ()  {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Wifi()));
+            },
           ),
           ListTile(
             leading: Icon(
@@ -30,7 +39,10 @@ class ServicesPage extends StatelessWidget {
             title: Text(
               'Wheel Chairs',
             ),
-            onTap: () => {},
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => WheelChairs()));
+            },
           ),
           ListTile(
             leading: Icon(
@@ -48,7 +60,10 @@ class ServicesPage extends StatelessWidget {
             title: Text(
               'Parking',
             ),
-            onTap: () => {},
+            onTap: ()  {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Parking()));
+            },
           ),
           ListTile(
             leading: Icon(
@@ -57,7 +72,10 @@ class ServicesPage extends StatelessWidget {
             title: Text(
               'ATM',
             ),
-            onTap: () => {},
+            onTap: ()  {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CafeScreen(din_id=4)));
+            },
           ),
         ],
       ),
