@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/credit_card_form.dart';
 import 'package:flutter_credit_card/credit_card_model.dart';
+import 'package:grad_2022/Network/remote/dioo_helper.dart';
 
+import '../../../Network/end_point.dart';
+import '../../../shared/variables.dart';
 import '../Address_Screen/Address_Screen.dart';
 
 
@@ -12,7 +15,6 @@ class BuyConformScreen extends StatefulWidget {
   @override
   State<BuyConformScreen> createState() => _BuyConformScreenState();
 }
-
 class _BuyConformScreenState extends State<BuyConformScreen> {
   String cardNumber = '';
 
@@ -32,12 +34,17 @@ class _BuyConformScreenState extends State<BuyConformScreen> {
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  paymentmetod? paymethod = paymentmetod.cash;
+
+
 
 
 
 
   @override
   Widget build(BuildContext context) {
+    // String? paymethod;
+
     MediaQueryData size = MediaQuery.of(context);
     var caption2 = Theme.of(context).textTheme.caption;
     return Scaffold(
@@ -64,7 +71,7 @@ class _BuyConformScreenState extends State<BuyConformScreen> {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                           children: [
-                            Text('Home',
+                        Text('${Label}',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -74,15 +81,15 @@ class _BuyConformScreenState extends State<BuyConformScreen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
-                      child: Text('AL Aiman Street',),
+                      child: Text('${StreetName}',),
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
-                      child: Text('8 ,4 , 60',),
+                      child: Text('${ApartmentNumber}, ${FloorNumber}, ${BuildingNumber}',),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text('Mobile: 01020248452'),
+                      child: Text('Mobile: ${MobileNumber}'),
                     ),
 
                   ],
@@ -106,7 +113,40 @@ class _BuyConformScreenState extends State<BuyConformScreen> {
                    ),
               ),
             ),
-            MyStatefulWidget(),
+            //MyStatefulWidget(),
+            Column(
+              children: <Widget>[
+                ListTile(
+                  title: const Text('Cash'),
+                  leading: Radio<paymentmetod>(
+                    value: paymentmetod.cash,
+                    groupValue: paymethod,
+                    onChanged: (value) {
+                      print(value);
+                      setState(() {
+                        paymethod = value;
+                      });
+                    },
+                  ),
+                ),
+                ListTile(
+                  title: const Text('Credit Card'),
+                  leading: Radio<paymentmetod>(
+                    value: paymentmetod.credit,
+                    groupValue: paymethod,
+                    onChanged: (value)
+                    {
+                      print(value);
+                      setState(() {
+                    //    _character = value;
+                        paymethod = value;
+                      });
+                    },
+
+                  ),
+                ),
+              ],
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: CreditCardForm(
@@ -177,11 +217,52 @@ class _BuyConformScreenState extends State<BuyConformScreen> {
                   ),
                 ),
                 onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    print('valid!');
-                  } else {
-                    print('invalid!');
+
+                  if( paymethod == paymentmetod.cash )
+                    {
+                      DioHelperr.postData(url: User_CartAdd,
+                          data:
+                          {
+
+                            "userId": loginuserId,
+                            "subtotal": user_total,
+                            "shipFee": Shipping_Fee,
+                            "discount": discount,
+                            "total": total
+                          }).then((value)
+                      {
+                        print('total bill = ${total?.toStringAsFixed(2)}');
+                      }).catchError((error)
+                      {print(error.toString());
+                      });
+                      DioHelperr.postData(url: User_PayAdd,
+                          data:
+                          {
+                            "userId": loginuserId,
+                            "typeOfPay": paymethod.toString(),
+                            "number": CartModelByUserIdList.length,
+                            "expired": "string",
+                            "time": DateTime.now().toString(),
+                            "is_Payed": true
+                          } ).then((value)
+                      {
+                        print('your order in ur way');
+                      }).catchError((error)
+                      {
+                        print(error.toString());
+                      });
+
+                    }
+                  if( paymethod == paymentmetod.credit )
+                  {
+                    if (formKey.currentState!.validate()) {
+                      print('valid!');
+                    } else {
+                      print('invalid!');
+                    }
+
                   }
+
                 },
               ),
             ),
@@ -191,6 +272,7 @@ class _BuyConformScreenState extends State<BuyConformScreen> {
       ),
     );
   }
+
 
   void onCreditCardModelChange(CreditCardModel? creditCardModel) {
     setState(() {
@@ -202,49 +284,6 @@ class _BuyConformScreenState extends State<BuyConformScreen> {
     });
   }
 }
-enum SingingCharacter { Cash, Credit }
+enum paymentmetod { cash, credit }
 
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
 
-  @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
-}
-
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  SingingCharacter? _character = SingingCharacter.Cash;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        ListTile(
-          title: const Text('Cash'),
-          leading: Radio<SingingCharacter>(
-            value: SingingCharacter.Cash,
-            groupValue: _character,
-            onChanged: (SingingCharacter? value) {
-              setState(() {
-                _character = value;
-              });
-            },
-          ),
-        ),
-        ListTile(
-          title: const Text('Credit Card'),
-          leading: Radio<SingingCharacter>(
-            value: SingingCharacter.Credit,
-            groupValue: _character,
-            onChanged: (SingingCharacter? value)
-            {
-              setState(() {
-                _character = value;
-              });
-            },
-
-          ),
-        ),
-      ],
-    );
-  }
-}

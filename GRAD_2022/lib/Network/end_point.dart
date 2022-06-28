@@ -16,3 +16,5 @@ const CartDelete ='/Cart/Delete';
 const DiscountCoupon ='/DiscountCoupon/FindCouponByCouponName';
 const DeleteByProductIdAndUserId ='/Favorite/DeleteByProductIdAndUserId';
 const DeleteByIdAndUserId='/Cart/DeleteByIdAndUserId';
+const User_PayAdd ='/User_Pay/Add';
+const User_CartAdd= '/User_Cart/Add';

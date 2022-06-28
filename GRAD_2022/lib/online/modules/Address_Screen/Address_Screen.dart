@@ -7,9 +7,14 @@ import '../Buy_conform_screen/Buy_conform_screen.dart';
 import '../Google_Map_Screen/Google_Map_Screen.dart';
 
 
-class AddressScreen extends StatelessWidget {
+class AddressScreen extends StatefulWidget {
 
 
+  @override
+  State<AddressScreen> createState() => _AddressScreenState();
+}
+
+class _AddressScreenState extends State<AddressScreen> {
   @override
   Widget build(BuildContext context) {
     MediaQueryData size = MediaQuery.of(context);
@@ -36,6 +41,12 @@ class AddressScreen extends StatelessWidget {
                     InkWell(
                     onTap: ()
                     {
+                      Label=AddressModelByUserIdList[index].label;
+                      StreetName=AddressModelByUserIdList[index].streetName;
+                      ApartmentNumber=AddressModelByUserIdList[index].apartmentNumber;
+                      FloorNumber=AddressModelByUserIdList[index].floorNumber;
+                      BuildingNumber=AddressModelByUserIdList[index].buildingNumber;
+                      MobileNumber = AddressModelByUserIdList[index].mobileNumber;
                       Navigator.push(context, MaterialPageRoute(builder: (context) => BuyConformScreen()));
                     },
                     child: Padding(
@@ -69,6 +80,10 @@ class AddressScreen extends StatelessWidget {
                                           "Id": AddressModelByUserIdList[index].id.toString()
                                         },).then((value) {print('address has been deleted');}).catchError((error){print(error.toString());});
                                         await DioHelperr.GetAddress();
+                                        AddressModelByUserIdList.removeAt(index);
+                                        setState(() {
+                                          AddressModelByUserIdList;
+                                        });
                                       },
                                       icon: Icons.remove,
                                       Textt: 'Remove',

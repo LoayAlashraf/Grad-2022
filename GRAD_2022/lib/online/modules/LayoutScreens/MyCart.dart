@@ -5,7 +5,6 @@ import '../../../Network/end_point.dart';
 import '../../../Network/remote/dioo_helper.dart';
 import '../../../shared/components/components.dart';
 import '../../../shared/components/constants.dart';
-import '../../../shared/components/items_number.dart';
 import '../../../shared/variables.dart';
 import '../../layout/cubit/cubit.dart';
 import '../../layout/cubit/states.dart';
@@ -19,11 +18,11 @@ class MyCartScreen extends StatefulWidget {
 
 class _MyCartScreenState extends State<MyCartScreen> {
   var CouponCode = TextEditingController();
-  int coupon = 0 ;
 
   @override
   Widget build(BuildContext context) {
     MediaQueryData size = MediaQuery.of(context);
+    coupon =0;
     return MultiBlocProvider(
         providers: [
           BlocProvider(create: (BuildContext context) =>
@@ -312,7 +311,7 @@ class _MyCartScreenState extends State<MyCartScreen> {
                           ),
                         ),
                         Expanded(
-                          child: Text('${((coupon*user_total)/100).toStringAsFixed(2)}',
+                          child: Text('${((coupon!*user_total)/100).toStringAsFixed(2)}',
                             textAlign: TextAlign.end,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
@@ -337,7 +336,7 @@ class _MyCartScreenState extends State<MyCartScreen> {
                           ),
                         ),
                         Expanded(
-                          child: Text('${(user_total+Shipping_Fee -((coupon*user_total)/100)).toStringAsFixed(2)}',
+                          child: Text('${(user_total+Shipping_Fee -((coupon!*user_total)/100)).toStringAsFixed(2)}',
                             textAlign: TextAlign.end,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
@@ -404,6 +403,8 @@ class _MyCartScreenState extends State<MyCartScreen> {
                         onPressed: () {
                           Navigator.push(context, MaterialPageRoute(
                               builder: (context) => BuyConformScreen()));
+                          discount =  ((coupon!*user_total)/100).toDouble();
+                          total = (user_total+Shipping_Fee -((coupon!*user_total)/100)) ;
                         },
                         color: Colors.deepOrange,
                         child: Text('Continue',
