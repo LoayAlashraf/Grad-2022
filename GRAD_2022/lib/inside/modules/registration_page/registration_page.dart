@@ -172,6 +172,7 @@ class _LoginScreen3State extends State<RegistrationPage> {
                         userModel.phone = phone.text;
                         userModel.password = password.text;
                         userModel.isactive = 0;
+                        if (_formKey.currentState!.validate()){
                         await DioHelper.Add(userModel: userModel);
                         if (userResponse == null) {
                           return null;
@@ -181,7 +182,7 @@ class _LoginScreen3State extends State<RegistrationPage> {
                               MaterialPageRoute(
                                 builder: (context) => LoginScreen(),
                               ));
-                        }
+                        }}
                       }),
                 ),
                 SizedBox(
