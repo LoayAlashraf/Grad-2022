@@ -52,25 +52,6 @@ class _ProductsScreenState extends State<ProductsScreen> {
                       onTap: ()
                       async {
                         productdetalsid=productid=ProductList[index]!.id;
-                        // navigateTo(context,DetailsScreen(productid=ProductList[index]!.id  ));
-                        //print(productid);
-                       // await DioHelperr.getData(url: productsdetails,
-                       //            query: {
-                       //              "Id":ProductList[index]!.id
-                       //            }).then((value)
-                       //        {
-                       //          //print(value.toString());
-                       //          productdetailsmodel=Productdetailsmodel.fromJson(value!.data);
-                       //          detailsimage = productdetailsmodel!.image.toString();
-                       //          name=productdetailsmodel!.name.toString();
-                       //          cost=productdetailsmodel!.cost.toString();
-                       //          description=productdetailsmodel!.description.toString();
-                       //          discount=productdetailsmodel!.discount.toString();
-                       //          print (productdetailsmodel.toString());
-                       //
-                       //        }).catchError((error){
-                       //          print(error.toString());});
-
                         await DioHelperr.GetDitailsData();
                         navigateTo(context, DetailsScreen());
 

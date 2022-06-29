@@ -227,28 +227,7 @@ class _MyCartScreenState extends State<MyCartScreen> {
                                                     // });
                                                     //DioHelperr.GetCartData();
                                                   }),
-                                              SizedBox(width: 7,),
-                                              // icontext(
-                                              //     Textt: 'Add to wish list',
-                                              //     icon: Icons.favorite,
-                                              //     onTap: () {}),
-
-
-                                            ],
-                                          ),
-                                        ]
-                                    ),
-
-                                  ),
-                                ),
-
-
-                              ),
-                        ),
-
-                      ],
-                    ),
-                  ),
+                                              SizedBox(width: 7,),],),]),),),),),],),),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
                     child: Row(

@@ -65,14 +65,6 @@ class _FavScreenState extends State<FavScreen> {
               itemBuilder: (context, index) =>
                   InkWell(
                     onTap: () async {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => DetailsScreen(
-                      //       product: products[itemIndex],
-                      //     ),
-                      //   ),
-                      // );
                       productdetalsid=productid=FavModelByUserIdList[index]!.productId;
                       await DioHelperr.GetDitailsData();
                       navigateTo(context, DetailsScreen());
