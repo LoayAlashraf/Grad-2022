@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grad_2022/shared/variables.dart';
 
 import '../../../Network/local/cache_helper.dart';
+import '../../../Network/remote/dioo_helper.dart';
 import '../../../inside/modules/login_page/login_page.dart';
 import '../../../inside/modules/welcome_page/welcome_page.dart';
 import '../../../shared/components/components.dart';
@@ -41,7 +42,8 @@ class SettingsScreen extends StatelessWidget {
               defaultButton(
                   text: 'Address',
                   function: ()
-                  {
+                  async {
+                    await DioHelperr.GetAddress();
                     navigateTo(context, AddressScreen());
                   }),
               SizedBox(height: 20,),

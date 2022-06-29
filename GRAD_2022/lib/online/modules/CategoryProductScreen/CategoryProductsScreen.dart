@@ -22,11 +22,12 @@ class CategoryProductsScreen extends StatefulWidget {
 class _CategoryProductsScreenState extends State<CategoryProductsScreen> {
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
 
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-        create: (BuildContext context)=>ShopCubit()..getCategoryProductData(CategoryId),
+        create: (BuildContext context)=>ShopCubit()..getCategoryProductData(CategoryId,),
       )
       ],
       child: BlocConsumer<ShopCubit,ShopState>(
@@ -36,7 +37,7 @@ class _CategoryProductsScreenState extends State<CategoryProductsScreen> {
               appBar: AppBar(),
               body: ConditionalBuilderRec(
                   condition: ProductCategoryList != null,
-                  builder:(context)=> ProductsBuilder2(ProductCategoryList,context),
+                  builder:(context)=> ProductsBuilder2(ProductCategoryList,context,size),
                   fallback:(context) => Center(child: CircularProgressIndicator())
               ),
             );
@@ -45,15 +46,15 @@ class _CategoryProductsScreenState extends State<CategoryProductsScreen> {
     );
   }
 
-  Widget ProductsBuilder2( ProductCategoryList,context ) =>
+  Widget ProductsBuilder2( ProductCategoryList,context,size ) =>
       SingleChildScrollView(
         child: Column(children: [
           GridView.count(crossAxisCount: 2,
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
-            mainAxisSpacing: 1.0,
-            crossAxisSpacing: 1.0,
-            childAspectRatio: 1 / 1.58,
+            mainAxisSpacing: 1.5,
+            crossAxisSpacing: 1.5,
+            childAspectRatio: 1 / 1.80,
             children: List.generate(
                 ProductCategoryList!.length,
                     (index) => InkWell(
@@ -76,7 +77,7 @@ class _CategoryProductsScreenState extends State<CategoryProductsScreen> {
                             Image(
                               image: NetworkImage(ProductCategoryList[index]!.image.toString()),
                               width: double.infinity,
-                              height: 200.0,
+                              height: (size.height)/4,
                             ),
                             if(ProductCategoryList[index]!.discount !=0)
                               Container(
@@ -114,7 +115,7 @@ class _CategoryProductsScreenState extends State<CategoryProductsScreen> {
                                 children: [
                                   Text((ProductCategoryList[index]!.cost-((ProductCategoryList[index]!.discount/100)*ProductCategoryList[index]!.cost)).toStringAsFixed(2),
                                       style: TextStyle(
-                                        fontSize: 18.0,
+                                        fontSize: 14.0,
                                         color: Colors.blue,
                                       )),
                                   Text(

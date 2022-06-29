@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:grad_2022/shared/components/components.dart';
 
 import '../../../Network/end_point.dart';
 import '../../../Network/remote/dioo_helper.dart';
@@ -205,7 +206,7 @@ class AddAddressScreen extends StatelessWidget
                 child: MaterialButton (
                   onPressed: ()
                   async {
-                    DioHelperr.postData(
+                  await   DioHelperr.postData(
                         url: AddressAdd,
                         data:
                         {
@@ -221,7 +222,7 @@ class AddAddressScreen extends StatelessWidget
                         }
                         ).then((value) {print('AdreessHasBeenAddSucsesfully');}).catchError((error){print(error.toString());});
                     await DioHelperr.GetAddress();
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => AddressScreen()));
+                    navigateAndFinish(context, AddressScreen());
                   },
                   color: Colors.deepOrange,
                   child: Text('Add',

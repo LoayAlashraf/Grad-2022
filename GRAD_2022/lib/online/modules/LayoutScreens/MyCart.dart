@@ -22,7 +22,6 @@ class _MyCartScreenState extends State<MyCartScreen> {
   @override
   Widget build(BuildContext context) {
     MediaQueryData size = MediaQuery.of(context);
-    coupon =0;
     return MultiBlocProvider(
         providers: [
           BlocProvider(create: (BuildContext context) =>
@@ -227,7 +226,19 @@ class _MyCartScreenState extends State<MyCartScreen> {
                                                     // });
                                                     //DioHelperr.GetCartData();
                                                   }),
-                                              SizedBox(width: 7,),],),]),),),),),],),),
+                                              SizedBox(width: 7,
+                                              ),
+                                            ],
+                                          ),
+                                        ]
+                                    ),
+                                  ),
+                                ),
+                              ),
+                        ),
+                      ],
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
                     child: Row(
@@ -356,7 +367,7 @@ class _MyCartScreenState extends State<MyCartScreen> {
                             {
                               couponNameModel = CouponNameModel.fromJson(value!.data[0]);
                               coupon = couponNameModel!.discount! ;
-                              print('enter copun done');
+                              print('enter copun done = ${coupon}');
 
                             }
                             ).catchError((error){print(error.toString());});

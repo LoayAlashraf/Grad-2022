@@ -102,7 +102,8 @@ class _BuyConformScreenState extends State<BuyConformScreen> {
               child: Container(
                 alignment: Alignment.topRight,
                 child: TextButton(onPressed: ()
-                {
+                async {
+                  await DioHelperr.GetAddress();
                   Navigator.push(context, MaterialPageRoute(builder: (context) => AddressScreen()));
                 },
                   child: Text('Change Address',

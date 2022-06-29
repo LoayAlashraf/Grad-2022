@@ -20,6 +20,7 @@ class _AddressScreenState extends State<AddressScreen> {
     MediaQueryData size = MediaQuery.of(context);
     var caption2 = Theme.of(context).textTheme.caption;
     DioHelperr.GetAddress();
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Address'),
@@ -84,7 +85,6 @@ class _AddressScreenState extends State<AddressScreen> {
                                         {
                                           "Id": AddressModelByUserIdList[index].id.toString()
                                         },).then((value) {print('address has been deleted');}).catchError((error){print(error.toString());});
-                                        await DioHelperr.GetAddress();
                                         AddressModelByUserIdList.removeAt(index);
                                         setState(() {
                                           AddressModelByUserIdList;
