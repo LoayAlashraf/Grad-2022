@@ -110,9 +110,26 @@ class _LoginScreenState extends State<LoginScreen> {
                       loginModel.password = password.text;
                       if (_formKey.currentState!.validate())
                       {
-                        var a = await DioHelper.login(loginModel: loginModel);
+                        await DioHelper.login(loginModel: loginModel);
                         if (loginResponse == null) {
-                          return null;
+                          return showDialog(context: context, builder: (BuildContext context) {
+                            return
+                            AlertDialog(
+                              title:  Text("Warning"),
+                              content: Text("Please Check Your Email OR Password OR press OK To Registration"),
+                              actions: [FlatButton(
+                            child: Text("Cancel"),
+                            onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
+                            },
+                            ),FlatButton(
+                            child: Text("OK"),
+                            onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationPage(),));
+                            },
+                            )],
+                            );
+                          });
                         }
                         else {
                           Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(),));

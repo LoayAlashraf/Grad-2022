@@ -13,18 +13,19 @@ class _WheelChairsState extends State<WheelChairs> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('PARKING'),
+        title: Text('WHEEL CHAIR'),
         backgroundColor: Colors.blueGrey,
         centerTitle: true,
       ),
       body: Column(
         children: [
           Stack(
-            fit:StackFit.loose,
+            fit: StackFit.loose,
             children: [
-              Image(height: 200,
-                  image: NetworkImage('http://www.citystars-heliopolis.com.eg/public/images/service_web_logo/H17POKvwx-main.png?1495050287042'))
-
+              Image(
+                  height: 200,
+                  image: NetworkImage(
+                      'http://www.citystars-heliopolis.com.eg/public/images/service_web_logo/H17POKvwx-main.png?1495050287042'))
             ],
           ),
           SizedBox(
@@ -33,22 +34,48 @@ class _WheelChairsState extends State<WheelChairs> {
               color: Colors.black,
             ),
           ),
-          SizedBox(height: 5,),
-          Text('Wheel Chairs',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 21,),),
-          SizedBox(height: 15,),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Text('''For the elderly and people with special needs, we provide free wheel chair service to facilitate transportation and touring inside our shopping centre.
+          SizedBox(
+            height: 5,
+          ),
+          Text(
+            'Wheel Chairs',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 21,
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              '''For the elderly and people with special needs, we provide free wheel chair service to facilitate transportation and touring inside our shopping centre.
 Pick-up Location: Information Desks.        
-                           ''', style: TextStyle(fontSize: 15.0 ,) ,
-    ),
-        ),
-          Container(color: Colors.black.withOpacity(0.7),
-              child: TextButton(onPressed: (){ Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => MallMapScreen()));}, child: Text('SHOW ON MAP',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15,color: Colors.white),)))
-        ],),
+                           ''',
+              style: TextStyle(
+                fontSize: 15.0,
+              ),
+            ),
+          ),
+          Container(
+              color: Colors.black.withOpacity(0.7),
+              child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MallMapScreen()));
+                  },
+                  child: Text(
+                    'SHOW ON MAP',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: Colors.white),
+                  )))
+        ],
+      ),
     );
   }
 }

@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:grad_2022/Network/local/cache_helper.dart';
 import 'package:grad_2022/inside/models/DiningResponse.dart';
 import 'package:grad_2022/inside/models/diningmodel.dart';
+import 'package:grad_2022/online/models/FavModel.dart';
 import 'package:grad_2022/online/models/productdetailsmodel.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../inside/models/loginResponse.dart';
 import '../../inside/models/login_model.dart';
@@ -39,7 +41,7 @@ class DioHelper {
   }
 
   static Future<Response?> login({required LoginModel loginModel}) async {
-    return await dio?.post('/User/Search', data: {
+    return await  dio?.post('/User/Search', data: {
       "email": loginModel.email,
       "password": loginModel.password
     }).then((value) {
@@ -101,5 +103,30 @@ static Future<Response?> getdiningdetails()async{
       print (productdetailsmodel.toString());
     }).catchError((error){
       print(error.toString());});
+  }
+  
+  static Future<Response?> favorit(userId,diningId)async {
+    return await DioHelper.postData(url: '/Favorite/Add',
+     data: {
+        "userId":userId,
+        "productId":diningId,
+        }
+    ).then((value) {
+      favModel = FavModel.fromJson(value!.data);
+    }).catchError((error){
+      print(error.toString());
+    });
+}
+  static Future<Response?>postData({
+    required String url,
+    Map<String, dynamic> ?query,
+    Map<String, dynamic> ?data,
+  })async
+  {
+    return await dio?.post(
+        url ,
+        queryParameters: query,
+        data: data
+    );
   }
  }

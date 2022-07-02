@@ -29,13 +29,6 @@ class _LoginScreen3State extends State<RegistrationPage> {
           'EASE Mall',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        actions: [
-          IconButton(
-              onPressed: () {
-                print('Hello');
-              },
-              icon: Icon(Icons.search_rounded))
-        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -172,17 +165,18 @@ class _LoginScreen3State extends State<RegistrationPage> {
                         userModel.phone = phone.text;
                         userModel.password = password.text;
                         userModel.isactive = 0;
-                        if (_formKey.currentState!.validate()){
-                        await DioHelper.Add(userModel: userModel);
-                        if (userResponse == null) {
-                          return null;
-                        } else {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => LoginScreen(),
-                              ));
-                        }}
+                        if (_formKey.currentState!.validate()) {
+                          await DioHelper.Add(userModel: userModel);
+                          if (userResponse == null) {
+                            return null;
+                          } else {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LoginScreen(),
+                                ));
+                          }
+                        }
                       }),
                 ),
                 SizedBox(

@@ -20,13 +20,149 @@ class MallPage extends StatelessWidget {
           centerTitle: true,
           title: Text("EASE Mall"), //appbar title
           backgroundColor: Colors.blueGrey, //appbar background color
-          leading: Icon(Icons.menu),
           actions: [
             Icon(Icons.manage_accounts),
             SizedBox(
               width: 10,
             )
           ],
+
+        ),
+        drawer: Drawer(
+          child: ListView(
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: [
+              const DrawerHeader(
+                decoration: BoxDecoration(
+
+                  color: Colors.blueGrey,
+                ),
+                child: Text('EASE Mall'),
+
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                ),
+                title: const Text('Home page'),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MallPage()));
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.store_mall_directory_outlined,
+                ),
+                title: const Text('Directory page'),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Directiry()));
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.movie_creation_outlined,
+                ),
+                title: const Text('Cinema page'),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CinemaPage()));
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.room_service,
+                ),
+                title: const Text('Dining page'),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FoodScreen()));
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.local_parking_outlined,
+                ),
+                title: const Text('Parking page'),
+                onTap: () {
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) => FoodScreen()));
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.wc,
+                ),
+                title: const Text('Fashion page'),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FashionScreen()));
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.map_outlined,
+                ),
+                title: const Text('Map page'),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MallMapScreen()));
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.phone,
+                ),
+                title: const Text('Contact page'),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ContactUS()));
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.cleaning_services,
+                ),
+                title: const Text('Services page'),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ServicesPage()));
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.info_outline,
+                ),
+                title: const Text('AboutUS page'),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AboutUS()));
+                },
+              ),
+            ],
+          ),
         ),
         body: Container(
             alignment: Alignment.topCenter,

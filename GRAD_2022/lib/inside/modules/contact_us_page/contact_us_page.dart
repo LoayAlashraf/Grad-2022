@@ -7,33 +7,15 @@ import 'package:url_launcher/url_launcher.dart'as UrlLauncher;
 
 import '../mall_page/mall_page.dart';
 
-class ContactUS extends StatefulWidget {
-  const ContactUS({Key? key}) : super(key: key);
 
+
+
+class ContactUS extends StatefulWidget {
   @override
   _ContactUSState createState() => _ContactUSState();
 }
 
 class _ContactUSState extends State<ContactUS> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Contact Us',
-      theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
-      ),
-      home: MyHomePage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
   final controller = MapController(
     location: LatLng(31.0373927, 31.3589407),
   );
@@ -95,15 +77,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-            onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MallPage(),
-                )),
-            icon: Icon(Icons.arrow_back_ios)),
+        backgroundColor: Colors.blueGrey,
         title: Text('Contact US'),
-        centerTitle: false,
+
         actions: [
           IconButton(
             tooltip: 'Call Us',
@@ -211,6 +187,7 @@ class _MyHomePageState extends State<MyHomePage> {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blueGrey,
         onPressed: _gotoDefault,
         tooltip: 'My Location',
         child: Icon(Icons.my_location),

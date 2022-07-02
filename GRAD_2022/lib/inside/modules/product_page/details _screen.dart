@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grad_2022/inside/modules/mall_map_screen/mall_map_screen.dart';
 
 import '../../../shared/variables.dart';
 
@@ -25,12 +26,45 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     children:[
     Card(
     elevation: 2,
-    child: Container(
-    height: 400,
-    decoration: BoxDecoration(
-    image: DecorationImage(image: NetworkImage(detailsimage.toString()),)
+    child: Stack(
+        alignment: AlignmentDirectional.bottomEnd,
+    children: [
+
+           Container(alignment: AlignmentDirectional.center,
+               height: 400,
+               child: Image(image: NetworkImage(detailsimage.toString()),)),
+
+       Container(
+
+        color: Colors.black.withOpacity(0.7),
+        padding: EdgeInsets.symmetric(
+          vertical: 3,
+        ),
+        child: TextButton.icon(
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => MallMapScreen()));
+          },
+          icon: Icon(
+            Icons.location_on_outlined,
+            color: Colors.white,
+          ),
+          label: Text(
+            'SHOW ON MAP',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+    ]
+
+
+
     ),
-    ),
+
     ),
      SizedBox(height: 20,),
      Padding(

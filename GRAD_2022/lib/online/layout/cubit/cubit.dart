@@ -152,6 +152,7 @@ class ShopCubit extends Cubit<ShopState>
   }
 
 
+
   Future<void> getfavdatabyuserid()
   async {
     emit(ShopLoadingFavProductDataScreen());

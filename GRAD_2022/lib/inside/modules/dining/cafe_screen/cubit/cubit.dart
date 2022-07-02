@@ -33,4 +33,15 @@ class Diningcubit extends Cubit<DiningStates> {
       emit(DiningErorrStates(error.toString()));
     });
   }
+  void changeFa(userId, diningId )
+  {
+    // is_Active = !is_Active!;
+    // if (is_Active == true) {
+    //   MyColor = Colors.red;
+    DioHelper.favorit(userId, productId);
+    // } else {
+    //   MyColor = Colors.grey;
+    //
+    // }
+  }
 }
